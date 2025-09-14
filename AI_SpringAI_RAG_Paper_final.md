@@ -138,11 +138,19 @@ The microservice based on SpringAI microservice exposes:
 - MCP server: the **getRAG** Tool, based on the same logic under */v1/chat/completions* endpoint, but via `sse`/`stdio` protocol
 
 It uses the Vector Store and LLMs tested, including references and credentials for Vector DB access.
+To run it, in a shell simply:
+
+```shell
+chmod 755 ./start.sh
+./start.sh
+```shell
+
 Let's examine the main components of this example. 
+
 
 ### application-dev.yml — RAG Parameters Injection
 
-All main RAG parameters, like model details, vector store, prompt, etc, are exported as environment variables injected into the application.yaml to be provided to the related beans at startup. One yaml for the two public/private deployments.
+All main parameters are exported as environment variables, injected into the application.yaml to be provided to the related beans at startup. One yaml for the two public/private deployments:
 
 ```yaml
 spring:
@@ -169,10 +177,11 @@ ai:
 ```
 
 **Notes:**  
-All main RAG parameters are exported as environment variables and injected here for both public/private deployments.  
-- RAG parameters injected into Spring beans at startup.  
-- Embedding model configured via Ollama.  
-- VectorStore initializes schema if needed.  
+Notes: All main RAG parameters here for both public/private deployments:
+
+- RAG parameters injected into Spring beans at startup.
+- Embedding model configured via Ollama.
+- VectorStore initializes schema if needed.
 
 ---
 
