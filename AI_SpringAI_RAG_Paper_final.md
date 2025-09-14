@@ -645,8 +645,6 @@ In the GUI, by a browser, proceed in this way:
 - Use the `getRag` tool interactively.  
 
 
-![MCP Inspector](images/mcp.png)
-
 ## Store new chunks
 It's provided an endpoint to add a list of new text chunks, that will be embedded and stored into the vector store. This allow to update the knowledge base with new info. This offer the opportunity to show how it's added a document into the Vector store:
 
