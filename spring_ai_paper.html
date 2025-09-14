@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Render Markdown from GitHub</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      line-height: 1.6;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: monospace;
+      background: #eee;
+      padding: 2px 4px;
+    }
+  </style>
+</head>
+<body>
+  <div id="content">Loading...</div>
+
+  <!-- include a Markdown parser, e.g. marked.js -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    // URL to raw Markdown file
+    const mdUrl = "https://raw.githubusercontent.com/corradodebari/corradodebari.github.io/main/AI_SpringAI_RAG_Paper_final.md";
+
+    fetch(mdUrl)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Network response was not OK");
+        }
+        return response.text();
+      })
+      .then(markdownText => {
+        const html = marked.parse(markdownText);
+        document.getElementById("content").innerHTML = html;
+      })
+      .catch(error => {
+        document.getElementById("content").textContent = "Could not load Markdown: " + error;
+      });
+  </script>
+</body>
+</html>
