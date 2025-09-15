@@ -25,7 +25,7 @@ docker run --runtime nvidia --gpus all --name vllm \
     vllm/vllm-openai:latest \
     --model meta-llama/Llama-3.2-1B-Instruct
 ```
-3. Let's test the endpoint:
+3. To test the endpoint:
 
 ```shell
 curl http://<GPU_SERVER_IP>:8000/v1/chat/completions \
@@ -40,7 +40,7 @@ curl http://<GPU_SERVER_IP>:8000/v1/chat/completions \
   }'
 ```
 
-4. Let's create an embedding server, with the token as well:
+4. Now, we create an embedding server, with the token as well:
 
 ```shell
 docker run --runtime nvidia --gpus all --name vllm-emb \
