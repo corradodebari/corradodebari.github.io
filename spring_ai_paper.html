@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Render Markdown from GitHub</title>
   <style>
     body {
@@ -11,45 +11,48 @@
       padding: 0 20px;
       line-height: 1.6;
     }
+
+    /* Inline code (keep light grey) */
     p code, li code {
       background: #eee;
       padding: 2px 4px;
       border-radius: 4px;
-     }
-    pre {
-       padding: 10px;
-       border-radius: 6px;
-       overflow-x: auto;
     }
-    code {
-        background: transparent; /* prevent grey on each line */
-        padding: 0;
+
+    /* RESET any theme styles on code blocks */
+    pre, pre code {
+      background: #fff !important;   /* remove grey block bg */
+    }
+    pre {
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    pre code {
+      padding: 0 !important;         /* no extra padding inside */
+      display: block;                /* ensure proper layout */
+      white-space: pre;              /* preserve spacing */
     }
   </style>
 </head>
 <body>
   <div id="content">Loading...</div>
 
-  <!-- include a Markdown parser, e.g. marked.js -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script>
-    // URL to raw Markdown file
     const mdUrl = "https://raw.githubusercontent.com/corradodebari/corradodebari.github.io/main/AI_SpringAI_RAG_Paper_final.md";
 
     fetch(mdUrl)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("Network response was not OK");
-        }
-        return response.text();
-      })
-      .then(markdownText => {
-        const html = marked.parse(markdownText);
+      .then(r => { if (!r.ok) throw new Error(r.statusText); return r.text(); })
+      .then(md => {
+        const html = marked.parse(md);
         document.getElementById("content").innerHTML = html;
       })
-      .catch(error => {
-        document.getElementById("content").textContent = "Could not load Markdown: " + error;
+      .catch(err => {
+        document.getElementById("content").textContent = "Could not load Markdown: " + err;
       });
   </script>
 </body>
 </html>
+
