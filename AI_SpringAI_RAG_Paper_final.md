@@ -67,7 +67,7 @@ spring.ai.ollama.chat.model=llama3.1
 ```
 
 - Run:  
-```shell
+```
 ./mvnw spring-boot:run
 ```
 
@@ -143,7 +143,7 @@ To run it, in a shell simply:
 ```shell
 chmod 755 ./start.sh
 ./start.sh
-```shell
+```
 
 Let's examine the main components of this example. 
 
