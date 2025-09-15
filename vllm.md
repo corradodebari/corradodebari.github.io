@@ -84,3 +84,9 @@ curl http://<GPU_SERVER_IP>:8001/v1/embeddings \
 Enjoy all Hugging Face models via this powerful LLM server provider!
 
 
+---
+
+## Disclaimer
+*The views expressed in this paper are my own and do not necessarily reflect the views of Oracle.*
+
+
