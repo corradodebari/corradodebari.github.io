@@ -68,7 +68,7 @@ curl http://<GPU_SERVER_IP>:8001/v1/embeddings \
 
 - Model ID: **meta-llama/Llama-3.2-1B-Instruct**
 - Provider: **hosted_vllm**
-- Provider URL: **http://<GPU_SERVER_IP>:8000/v1**
+- Provider URL: **http://[GPU_SERVER_IP]:8000/v1**
 - Context Length: **131072**
 - Max Completion Tokens: **2048**
 
@@ -78,7 +78,7 @@ curl http://<GPU_SERVER_IP>:8001/v1/embeddings \
 
 - Model ID: **nomic-ai/nomic-embed-text-v1**
 - Provider: **hosted_vllm**
-- Provider URL: **http://<GPU_SERVER_IP>:8001/v1**
+- Provider URL: **http://[GPU_SERVER_IP]:8001/v1**
 - Max Chunk Size: **8192**
 
 5. Check if model are in the list and `Edit` each one to `Enable`.
