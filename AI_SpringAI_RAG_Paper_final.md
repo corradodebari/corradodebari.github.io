@@ -751,4 +751,4 @@ Hoping this article has made you want to try SpringAI with the help of the Optim
 ---
 
 ## Disclaimer
-The views expressed in this paper are my own and do not necessarily reflect the views of Oracle.
+*The views expressed in this paper are my own and do not necessarily reflect the views of Oracle.*
