@@ -11,15 +11,19 @@
       padding: 0 20px;
       line-height: 1.6;
     }
-    pre {
-      background: #f4f4f4;
-      padding: 10px;
-      overflow-x: auto;
-    }
-    code {
-      font-family: monospace;
+    p code, li code {
       background: #eee;
       padding: 2px 4px;
+      border-radius: 4px;
+     }
+    pre {
+       padding: 10px;
+       border-radius: 6px;
+       overflow-x: auto;
+    }
+    code {
+        background: transparent; /* prevent grey on each line */
+        padding: 0;
     }
   </style>
 </head>
