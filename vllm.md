@@ -2,7 +2,7 @@
 
 ## Introduction  
 
-I love **Ollama** LLMs testing on desktop, fully integrated into the [**Oracle AI Optimizer & Toolkit**](https://www.oracle.com/database/ai-optimizer-toolkit/) to create a **RAG** Agent based on **Oracle DB 23ai**. But, if you want to run models on GPU servers through the **[vLLM](https://github.com/vllm-project/vllm)** platform, this is a brief how-to guide to exploit this high scalable, private LLM server provider, just integrated into the AI Optimizer. At the end, you can export and run the RAG Agent as a LangChain MCP server from `Configuration`/`Settings`/`Source Code Templates` : `Download LangchainMCP`.
+I love **Ollama** LLMs testing on desktop, fully integrated into the [**Oracle AI Optimizer & Toolkit**](https://www.oracle.com/database/ai-optimizer-toolkit/) to create a **RAG** Agent based on **Oracle DB 23ai**. But, if you want to run models on GPU servers through the **[vLLM](https://github.com/vllm-project/vllm)** platform, this is a brief how-to guide to exploit this high scalable, private LLM server provider, just integrated into the AI Optimizer. When you are satisfied of your experiments, you can export the final configuration and run the RAG Agent as a LangChain MCP server.
 
 
 ## Install vLLM on a GPU server
@@ -80,6 +80,8 @@ curl http://<GPU_SERVER_IP>:8001/v1/embeddings \
 
 5. Check if model are in the list and `Edit` each one to `Enable`.
 
+## Export as an MCP server.
+At the end of your experimentation, you can now export and run the RAG Agent as a **LangChain MCP** server from `Configuration`/`Settings`/`Source Code Templates` : `Download LangchainMCP`.
 
 Enjoy all Hugging Face models via this powerful LLM server provider!
 
