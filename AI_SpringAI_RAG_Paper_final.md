@@ -742,4 +742,13 @@ oractl:> deploy --app-name rag --service-name springai  --artifact-path ./target
 - [Spring AI Docs: Ollama Embeddings](https://docs.spring.io/spring-ai/reference/api/embeddings/ollama-embeddings.html)  
 - [Spring AI Docs: ETL Pipeline](https://docs.spring.io/spring-ai/reference/api/etl-pipeline.html)  
 - [Oracle AI Optimizer Toolkit](https://www.oracle.com/database/ai-optimizer-toolkit/)  
-- [Oracle AI Optimizer GitHub](https://github.com/oracle/ai-optimizer)  
+- [Oracle AI Optimizer GitHub](https://github.com/oracle/ai-optimizer)
+
+
+## Conclusion
+Hoping this article has made you want to try SpringAI with the help of the Optimizer, see you for the next in-depth articles on the topic.
+
+---
+
+## Disclaimer
+The views expressed in this paper are my own and do not necessarily reflect the views of Oracle.
