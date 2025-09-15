@@ -2,7 +2,7 @@
 
 ## Introduction  
 
-I love **Ollama** LLMs testing on desktop, fully integrated into the [**Oracle AI Optimizer & Toolkit**](https://www.oracle.com/database/ai-optimizer-toolkit/) to create a **RAG** Agent based on **Oracle DB 23ai**. But, if you want to run models on GPU servers through the **[vLLM](https://github.com/vllm-project/vllm)** platform, this is a brief how-to guide to exploit this high scalable, private LLM server provider, just integrated into the AI Optimizer. When you are satisfied of your experiments, you can export the final configuration and run the RAG Agent as a LangChain MCP server.
+I love **Ollama** LLMs testing on desktop, fully integrated into the [**Oracle AI Optimizer & Toolkit**](https://www.oracle.com/database/ai-optimizer-toolkit/) to create a **RAG** Agent based on **Oracle DB 23ai**. But, if you want to run models on GPU servers through the **[vLLM](https://github.com/vllm-project/vllm)** platform, this is a brief how-to guide to exploit this high scalable, private LLM server provider, just integrated into the AI Optimizer. When you will be satisfied of your experiments, you can export the final configuration and run the RAG Agent as a LangChain MCP server.
 
 
 ## Install vLLM on a GPU server
