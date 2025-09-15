@@ -1,5 +1,7 @@
 # Try vLLM in the Oracle AI Optimizer & Toolkit 
 
+![vllm setup](images/vllm.png)
+
 ## Introduction  
 
 I love **Ollama** to test LLMs on my desktop, fully integrated into the [**Oracle AI Optimizer & Toolkit**](https://www.oracle.com/database/ai-optimizer-toolkit/) to create a **RAG** Agent based on **Oracle DB 23ai**. 
