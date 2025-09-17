@@ -80,7 +80,7 @@ curl http://<GPU_SERVER_IP>:8001/v1/embeddings \
 - Provider URL: **http://[GPU_SERVER_IP]:8001/v1**
 - Max Chunk Size: **8192**
 
-5. Check if model are in the list and `Edit` each one to `Enable`.
+5. Check if models are in the list and `Edit` each one to `Enable`.
 
 ## Export as a MCP server.
 At the end of your experimentation, you can now export and run the RAG Agent as a **LangChain MCP** server from `Configuration`/`Settings`/`Source Code Templates` : `Download LangchainMCP`. Into the README.md the instructions to run it.
