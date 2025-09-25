@@ -396,3 +396,10 @@ END;
 /
 ```
 take a look to this [documentation](https://docs.oracle.com/en/cloud/paas/autonomous-database/dedicated/abmsc/index.html#GUID-12D91681-B51C-48E0-93FD-9ABC67B0F375).
+
+
+---
+
+## Disclaimer
+*The views expressed in this paper are my own and do not necessarily reflect the views of Oracle.*
+
