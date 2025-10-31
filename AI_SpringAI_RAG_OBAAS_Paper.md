@@ -1,4 +1,4 @@
-## Spring AI outcome from Oracle AI Optimizer & Toolkit to Oracle Backend for Microservices and AI 
+## Oracle AI Optimizer & Toolkit: running Spring AI microservices export to the Oracle Backend for Microservices and AI 
 
 On **Oracle Backend for Microservices and AI (rel. 1.4.0)**, to simplify as much as possible the process, configure the Backend to host the Vector Store to run the AI Optimizer and Toolkit. In this way, you can get smoothly the vector store created to be copied as a dedicated version for the microservice running. If you prefer to run the microservice in another user schema, before the step **5.** execute the steps described at **Other deployment options** chapter.
 
