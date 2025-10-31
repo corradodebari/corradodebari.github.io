@@ -260,7 +260,7 @@ GRANT SELECT ON "<OPTIMIZER_USER>"."<VECTOR_STORE_TABLE>" TO <MS_USER>;
 3. Then proceed from the step 5. as usual, changing:
 
 * **OPTIMIZER_USER** -> **MS_USER**
-* **OPTIMIZER_NAMESPACE ** -> **MS_NAMESPACE**
+* **OPTIMIZER_NAMESPACE** -> **MS_NAMESPACE**
 * **DATASTORE_ID** -> **MS_DATASTORE_ID**
 
 
