@@ -1,6 +1,6 @@
-## Oracle Backend for Microservices and AI (rel. 1.4.0)
+## Spring AI outcome from Oracle AI Optimizer & Toolkit to Oracle Backend for Microservices and AI 
 
-To simplify as much as possible the process, configure the Oracle Backend for Microservices and AI Autonomous DB to run the AI Optimizer and toolkit. In this way, you can get smoothly the vectorstore created to be copied as a dedicated version for the microservice running. If you prefer to run the microservice in another user schema, before the step **5.** execute the steps described at  **Other deployment options** chapter.
+On **Oracle Backend for Microservices and AI (rel. 1.4.0)**, to simplify as much as possible the process, configure the Backend to host the Vector Store to run the AI Optimizer and toolkit. In this way, you can get smoothly the vector store created to be copied as a dedicated version for the microservice running. If you prefer to run the microservice in another user schema, before the step **5.** execute the steps described at **Other deployment options** chapter.
 
 <p align="center">
   <img src="images/obaas_cover.jpg" alt="obaas" />
@@ -19,7 +19,7 @@ kubectl -n obaas-admin port-forward svc/obaas-admin 8080:8080
 namespace create --namespace <OPTIMIZER_NAMESPACE>
 ```
 
-* create the datastore, saving the passoword provided:
+* create the datastore, saving the password provided:
 ```
 datastore create --namespace <OPTIMIZER_NAMESPACE> --username <OPTIMIZER_USER> --id <DATASTORE_ID>
 ```
