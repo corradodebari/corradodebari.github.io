@@ -2,7 +2,7 @@
 
 To simplify as much as possible the process, configure the Oracle Backend for Microservices and AI Autonomous DB to run the AI Optimizer and toolkit. In this way, you can get smoothly the vectorstore created to be copied as a dedicated version for the microservice running. If you prefer to run the microservice in another user schema, before the step **5.** execute the steps described at  **Other deployment options** chapter.
 
-![obaas](images/obass_cover.jpg)
+![obaas](images/obaas_cover.jpg)
 
 * Create a user/schema via oractl. First open a tunnel:
 ```
