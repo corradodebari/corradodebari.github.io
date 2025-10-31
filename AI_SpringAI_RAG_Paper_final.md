@@ -696,42 +696,8 @@ If you have further customized the example code provided and you want to deploy 
 [Oracle Backend for Microservices and AI](https://oracle.github.io/microservices-datadriven/spring/)
 It includes pre-configured Service registry & discovery, orchestration/workflow, Saga/LRA coordinator, as well as an API Gateway and observability and monitoring capabilities.
 
-These are the details and operations needed.
+Details coming soon...
 
-### application-obaas.yml — Production Config
-It's available a dedicated yaml file to address the deployment in this platform:
-
-```yaml
-aims:
-  context_instr: "..."
-  rag_params:
-    search_type: Similarity
-    top_k: 4
-  vectortable:
-    name: JAVA_OLLAMA_ALL_MINILM_256_52_COSINE_HNSW
-
-spring:
-  ai:
-    ollama:
-      base-url: http://ollama.ollama.svc.cluster.local:11434
-    chat: {}
-```
-
-### Deployment via CLI
-With the provided command line tool, the `oractl`, you can proceed to deploy the jar file built as shown in this example:
-
-```bash
-kubectl -n obaas-admin port-forward svc/obaas-admin 8080:8080
-
-oractl
-oractl:> connect
-? username obaas-admin
-? password **************
-
-oractl:> create --app-name rag
-oractl:> deploy --app-name rag --service-name springai  --artifact-path ./target/myspringai-1.0.0-SNAPSHOT.jar --image-version 0.0.1 --service-profile prod
-```
- 
 ---
 
 ## References  
