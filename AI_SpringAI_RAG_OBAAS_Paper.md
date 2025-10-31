@@ -103,7 +103,7 @@ kubectl -n ollama exec svc/ollama -- ollama run "llama3.1" "what is spring boot?
 NOTICE: for network issue related to huge model download, the process could stuck. Repeat it, or choose to pull manually just for test, removing from the helm chart the `models` part in `ollama-values.yaml`. 
 
 To remove it and repeat:
-* get the ollama **<POD_ID>** stuck:
+* get the ollama [POD_ID] stuck:
 
 ```bash
 kubectl get pods -n ollama
@@ -179,7 +179,7 @@ curl -N http://localhost:9090/v1/chat/completions \
 
 7. Open to external access via APISIX Gateway:
 
-* get the Kubernetes **<EXTERNAL-IP>** address:
+* get the Kubernetes [EXTERNAL-IP] address:
 
 ```bash
 kubectl -n ingress-nginx get svc ingress-nginx-controller
@@ -196,7 +196,7 @@ kubectl get secret -n apisix apisix-dashboard -o jsonpath='{.data.conf\.yaml}' |
 ```bash
 kubectl port-forward -n apisix svc/apisix-dashboard 8090:80
 ```
-and provide the credentials at local url http://localhost:8090/,  **admin**/**<Password_>**
+and provide the credentials at local url http://localhost:8090/,  [admin]/[Password]
 
 * Create a route to access the microservice:
 
@@ -226,7 +226,7 @@ curl -N http://<EXTERNAL-IP>/v1/chat/completions \
 
 ### Other deployment options
 
-If you want to run on another schema instead the **<OPTIMIZER_USER>**, you should add a few steps.
+If you want to run on another schema instead the [OPTIMIZER_USER], you should add a few steps.
 
 1. Connect to the backend via oractl:
 
@@ -242,14 +242,14 @@ kubectl -n obaas-admin port-forward svc/obaas-admin 8080:8080
 namespace create --namespace <MS_NAMESPACE>
 ```
 
-* Create a dedicated user/schema for the microservice, providing a **<MS_USER_PWD>** to execute the command:
+* Create a dedicated user/schema for the microservice, providing a [MS_USER_PWD] to execute the command:
 
 ```bash
 datastore create --namespace <MS_NAMESPACE> --username <MS_USER> --id <MS_DATASTORE_ID>
 ```
 
 
-2. Connect to the Autonomous DB instance via the **<OPTIMIZER_USER>**/**<OPTIMIZER_USER_PASSWORD>**
+2. Connect to the Autonomous DB instance via the [OPTIMIZER_USER]/[OPTIMIZER_USER_PASSWORD]
 
 * Grant access to the microservice user to copy the vectorstore used:
 
@@ -273,7 +273,7 @@ kubectl -n obaas-admin port-forward svc/obaas-admin 8080:8080
 
 * Run `oractl` and connect with the provided credentials:
 
-```v
+```bash
 workload list --namespace <MS_NAMESPACE>
 workload delete --namespace <MS_NAMESPACE> --id myspringai
 image list
@@ -281,7 +281,7 @@ image delete --imageId <ID_GOT_WITH_IMAGE_LIST>
 artifact list
 artifact delete --artifactId <ID_GOT_WITH_ARTIFACT_LIST>
 ```
-* disconnect **<OPTIMIZER_USER>** from  DB (the Optimizer server) and finally with **oractl**:
+* disconnect [OPTIMIZER_USER] from  DB (the Optimizer server) and finally with **oractl**:
 
 ```bash
 datastore delete --namespace <OPTIMIZER_NAMESPACE> --id optimizerds
