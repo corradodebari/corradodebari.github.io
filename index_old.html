@@ -1,251 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
-  <style>
-    :root{
-      --bg: #f4f4f9;
-      --card: #ffffff;
-      --text: #333;
-      --muted: #666;
-      --line: #d9d9df;
-      --accent: #007BFF;
-      --ink: #222;
-    }
-    *{box-sizing:border-box;}
-    body{
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-      background: var(--bg);
-      color: var(--text);
-    }
-
-    /* Top header (like the example screenshot) */
-    .topbar{
-      background: #fff;
-      border-bottom: 1px solid var(--line);
-    }
-    .topbar-inner{
-      max-width: 1050px;
-      margin: 0 auto;
-      padding: 28px 20px 22px;
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-    .brand h1{
-      margin: 0;
-      font-size: 2.2rem;
-      color: var(--ink);
-      letter-spacing: -0.02em;
-    }
-    .brand .subtitle{
-      margin-top: 6px;
-      color: var(--muted);
-      font-size: 1.05rem;
-    }
-    .social-contact{
-      display: grid;
-      gap: 10px;
-      justify-items: end;
-    }
-    .social{
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-    .icon-btn{
-      width: 44px;
-      height: 44px;
-      border-radius: 999px;
-      background: #2c2c2c;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      transition: transform .08s ease, opacity .08s ease;
-    }
-    .icon-btn:hover{ transform: translateY(-1px); opacity: .92; }
-    .icon-btn svg{ width: 20px; height: 20px; fill: #fff; }
-    .contact{
-      text-align: right;
-      color: var(--muted);
-      font-size: 0.98rem;
-      line-height: 1.4;
-    }
-    .contact a{
-      color: var(--ink);
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .contact a:hover{ text-decoration: underline; }
-
-    /* Main container */
-    .container{
-      max-width: 1050px;
-      margin: 22px auto;
-      padding: 22px;
-      background: var(--card);
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,.06);
-    }
-
-    /* Section title with dotted line (like the example screenshot) */
-    .section-title{
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      gap: 14px;
-      margin: 14px 0 18px;
-      color: var(--ink);
-      font-size: 1.9rem;
-      letter-spacing: -0.01em;
-    }
-    .section-title:before,
-    .section-title:after{
-      content:"";
-      border-top: 2px dotted var(--line);
-      height: 0;
-    }
-
-    /* About layout */
-    .about{
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 26px;
-      align-items: start;
-    }
-    .avatar{
-      width: 200px;
-      height: 200px;
-      border-radius: 999px;
-      overflow: hidden;
-      border: 6px solid #fff;
-      box-shadow: 0 6px 16px rgba(0,0,0,.10);
-      background: #e9e9ef;
-    }
-    .avatar img{
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .about p{
-      margin: 0 0 12px;
-      font-size: 1.02rem;
-      color: #333;
-    }
-
-    /* Headings & lists */
-    h2{
-      color: #555;
-      border-bottom: 2px solid #333;
-      padding-bottom: 6px;
-      margin-top: 30px;
-    }
-    ul{
-      padding-left: 20px;
-    }
-    ul li{ margin: 10px 0; }
-    a{ color: var(--accent); }
-    a:hover{ text-decoration: underline; }
-
-    .small-note{
-      margin-top: 6px;
-      color: var(--muted);
-      font-size: 0.98rem;
-    }
-
-    footer{
-      text-align: center;
-      margin: 22px 0;
-      padding: 10px;
-      font-size: 0.9em;
-      color: #666;
-    }
-
-    /* Responsive */
-    @media (max-width: 780px){
-      .about{ grid-template-columns: 1fr; }
-      .avatar{ margin: 0 auto; }
-      .social-contact{ justify-items: start; }
-      .contact{ text-align: left; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+      <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #555;
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            margin: 10px 0;
+        }
+        ul li a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        ul li a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
-
-  <header class="topbar">
-    <div class="topbar-inner">
-      <div class="brand">
-        <h1>Corrado De Bari</h1>
-        <div class="subtitle">Developer Evangelist · Generative AI Platforms · Solution Architecture</div>
-      </div>
-
-      <div class="social-contact">
-        <div class="social" aria-label="Social links">
-          <a class="icon-btn" href="https://github.com/corradodebari" target="_blank" rel="noopener" aria-label="GitHub">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.2.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.5-1.3-1.3-1.6-1.3-1.6-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.2 1.9 1.2 1.1 1.9 2.9 1.4 3.6 1.1.1-.8.4-1.4.7-1.7-2.6-.3-5.3-1.3-5.3-5.9 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.9 1.2 2 1.2 3.3 0 4.6-2.7 5.6-5.3 5.9.4.4.8 1.1.8 2.2v3.2c0 .4.2.7.8.6A12 12 0 0 0 12 .5z"/></svg>
-          </a>
-          <a class="icon-btn" href="https://www.linkedin.com/in/corradodebari/" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 20.4h-3.6v-5.6c0-1.3 0-2.9-1.8-2.9-1.8 0-2.1 1.4-2.1 2.8v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.7-1.8 3.4-1.8 3.7 0 4.3 2.4 4.3 5.5v6.1zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.4H3.5V9h3.6v11.4z"/></svg>
-          </a>
-          <a class="icon-btn" href="https://medium.com/@corradodebari" target="_blank" rel="noopener" aria-label="Medium">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.2c.1-.9-.2-1.9-.8-2.6V4h6.4l5 11 4.4-11H24v.6c-.6.6-.7.9-.7 1.8v13.2c0 .9.1 1.2.7 1.8v.6h-8.2v-.6c.6-.6.6-.8.6-1.8V9.1l-6.1 14.7h-.8L4 8.5v9.6c-.2 1.2.2 2.4 1.1 3.2v.6H0v-.6c.9-.8 1.2-2 1.1-3.2V7.2z"/></svg>
-          </a>
-          <a class="icon-btn" href="https://corradodebari.github.io/" target="_blank" rel="noopener" aria-label="Website">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm6.93 6h-2.95c-.31-1.26-.77-2.45-1.38-3.56A8.03 8.03 0 0 1 18.93 8zM12 4c.62.89 1.59 2.52 2.2 4H9.8c.61-1.48 1.58-3.11 2.2-4zM4.07 14a7.87 7.87 0 0 1 0-4h3.38c-.09.65-.15 1.31-.15 2s.06 1.35.15 2H4.07zm1-6h2.95c-.4-1.22-.9-2.4-1.38-3.56A8.03 8.03 0 0 0 5.07 8zM12 20c-.62-.89-1.59-2.52-2.2-4h4.4c-.61 1.48-1.58 3.11-2.2 4zm3.55-6h-7.1c-.1-.65-.17-1.31-.17-2s.07-1.35.17-2h7.1c.1.65.17 1.31.17 2s-.07 1.35-.17 2zm.47 5.44c.48-1.16.98-2.34 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56zM16.55 14c.09-.65.15-1.31.15-2s-.06-1.35-.15-2h3.38a7.87 7.87 0 0 1 0 4h-3.38z"/></svg>
-          </a>
-        </div>
-
-        <div class="contact">
-          <div>Email: <a href="mailto:corrado.de.baril@oracle.com">corrado.de.baril@oracle.com</a></div>
-          <div>Web: <a href="https://corradodebari.github.io/" target="_blank" rel="noopener">corradodebari.github.io</a></div>
-          <div>Sessionize Talks: <a href="https://sessionize.com/corrado-de-bari/" target="_blank" rel="noopener">https://sessionize.com/corrado-de-bari/</a></div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main class="container">
-    <div class="section-title">About Me</div>
-
-    <div class="about">
-      <div class="avatar" title="My picture">
-        <!-- Replace profile.jpg with your own image file -->
-        <img src="images/io.jpg" alt="Profile photo">
-      </div>
-
-      <div>
-        <p>
-          I’m a Developer Evangelist in Oracle’s Database Organization, focused on building Generative AI platforms that harness DBMS AI capabilities, while also championing their adoption as an evangelist.
-          Reporting to the Oracle Corporation in US, I cover EMEA customers, system integrators, and ISVs.
-        </p>
-         <p>
-          I work on the Kubernetes-based deployment platform for AI microservices, <b>Oracle Backend for Microservices and AI</b>,
-          and I’m leading the development of the <b>AI Optimizer and Toolkit</b> — a low-code platform that empowers developers
-          to design and fine-tune AI Agents using Oracle’s Vector Store.
-        </p>
-        As former Cloud Architect and Data Analytics & AI/ML domain specialist, I've driven Cloud business opportunities in the Oracle Technology Cloud Engineering Team.
-        With more than 25 years of experience in IT, I have worked in several roles like System Engineer in TIM, as Developer in companies like Olivetti Research, SIA, Unisys and Sun Microsystems, and as Sales Consultant in Sun Microsystems and Oracle.
-        <p></p>
-        <p>
-        I've a degree in Computer Science and a Master in Information Technology.
-        </p>
-
-        Known for excellent client-facing skills, I have been involved in PoC, proposals and presentations that have landed six-figure contracts, designing hardware & software architectures for Data Platform, Portals, SOA and BPM and Cloud Infrastructure. I also excel in merging business and user needs into high-quality, cost-effective design solutions while keeping within budgetary constraints.
-  
-      </div>
-    </div>
-
-    <div class="section-title" style="margin-top:32px;">Papers</div>
+     <div class="container">
+    <h1>Corrado De Bari's AI Activity Hub</h1>
+    
+    I’m a Developer Evangelist in Oracle’s Database Organization, focused in building Generative AI platforms that harness DBMS AI capabilities, while also championing their adoption as an evangelist.
+    I work on the Kubernetes-based deployment platform for AI microservices, <B>Oracle Backend for Microservices and AI</B>, and I’m leading the development of the <B>AI Optimizer and Toolkit</B> —a low-code platform that empowers developers to design and fine-tune AI Agents using Oracle’s Vector Store.
+    Reporting to an Oracle Corporation US team, I cover EMEA customers, system integrators and ISVs. 
+    From 2017 to 2020, I worked as an AI/ML domain specialist, providing support for all deals related to this topic through workshops, proof-of-concepts, demos, and solution design.
+    This is my journey through AI — a collection of posts, contributions, training, events, and more from the past few years.
+    <br><br> 
+    <b>Talks collection</b>: <a href="https://sessionize.com/corrado-de-bari/" target="_blank">sessionize profile</a>.
+         
+    <h2>Papers</h2>
     <ul style="list-style-type: disc;">
         <li><a href="https://corradodebari.github.io/automated_nl2sql_testing.html" target="_blank">Automated NL2SQL testing</a></li>
         <li><a href="https://corradodebari.github.io/basic_agent_nl2sql.html" target="_blank">A NL2SQL Agent for Oracle DB in WayFlow with the SQLcl MCP server</a></li>
@@ -271,16 +97,14 @@
         <li><a href="https://medium.com/@corradodebari/machine-learning-on-oracle-autonomous-db-a-practical-example-32757ec0c1a1" target="_blank">Machine Learning on Autonomous Database: A Practical Example</a></li>
     </ul>
 
-    <div class="section-title" style="margin-top:32px;">Platforms/Demos Contributions</div>
-
+    <h2>Platforms/Demos Contributions</h2>
     <ul style="list-style-type: disc;">
         <li><a href="https://github.com/oracle/ai-optimizer" target="_blank">Oracle AI Optimizer and Toolkit</a></li>
         <li><a href="https://github.com/oracle-devrel/springai-rag-db23ai/" target="_blank">Spring AI for RAG on Oracle 23ai</a></li>
         <li><a href="https://github.com/corradodebari/vector_3D_explorer" target="_blank">Vector 3D explorer</a></li>
     </ul>
 
-    <div class="section-title" style="margin-top:32px;">Training and Certifications</div>
-
+    <h2>Training and Certifications</h2>
     <ul style="list-style-type: disc;">
         <li><a href="https://www.udacity.com/certificate/e/365dc81c-743a-11f0-bf5e-57ac80193633" target="_blank">Udacity: Agentic AI Nanodegree</a></li>
         <li><a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=3E5D4C25D90BA04C7219BB74FE5C951B480F26B5E192C18147EB8E854D7759E9" target="_blank">Oracle AI Vector Search Certified Professional</a></li>
@@ -291,14 +115,14 @@
         <li><a href="https://github.com/corradodebari/certification/raw/master/CourseraMmds2015.pdf" target="_blank">Coursera: Mining Massive Datasets - Stanford University</a></li>
     </ul>
 
-    <div class="section-title" style="margin-top:32px;">AI posts by channels</div>
+    <h2>AI posts by channels</h2>
     <ul style="list-style-type: disc;">
         <li><a href="https://blogs.oracle.com/authors/corrado-de-bari" target="_blank">Oracle AI Blogs</a></li>
         <li><a href="https://medium.com/@corradodebari" target="_blank">Medium</a></li>
         <li><a href="https://www.linkedin.com/in/corradodebari/details/featured/" target="_blank">LinkedIn Documents</a></li>
     </ul>
 
-    <div class="section-title" style="margin-top:32px;">Main initiatives on AI/ML in last years</div>
+    <h2>Main Activities in AI/ML in last years</h2>
     <ul style="list-style-type: disc;">
         <li>Webinar: <a href="https://www.linkedin.com/posts/corradodebari_springai-springboot-generativeai-activity-7198968604795555840-aXrg?utm_source=share&utm_medium=member_desktop" target="_blank">Java meets Generative AI: Build a knowledge management system with Spring AI</a></li>
         <li>Book: <a href="https://www.linkedin.com/posts/corradodebari_intelligenza-artificiale-e-sicurezza-opportunità-activity-6792364491947429888-GMQZ?utm_source=share&utm_medium=member_desktop" target="_blank">AI Book Contribution</a></li>
@@ -319,12 +143,6 @@
         <li>Workshop: <a href="https://www.linkedin.com/posts/corradodebari_ai-e-la-computer-vision-deep-learning-activity-6447369649947439104-b1Hj?utm_source=share&utm_medium=member_desktop" target="_blank">AI e la Computer Vision (Deep Learning) - BASE</a></li>
         <li>Workshop: <a href="https://www.linkedin.com/posts/corradodebari_oggi-con-il-collega-alessandro-moro-seminario-activity-6402884026692091904-uxTt?utm_source=share&utm_medium=member_desktop" target="_blank">AI & Computer Vision @ University "La Sapienza" - Rome</a></li>
     </ul>
-
-  </main>
-
-  <footer>
-    © 2026 Corrado De Bari
-  </footer>
-
+     </div>
 </body>
 </html>
