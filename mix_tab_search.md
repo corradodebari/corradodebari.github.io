@@ -651,7 +651,7 @@ This is just a proposal, through a simple example, to start exploring the Oracle
 
 ## Reference
 
-- [1] ["Unlock Similarity Search on Tabular Data, with the Oracle DB23ai."]("https://github.com/corradodebari/vectorsearch/")
+- [1] ["Unlock Similarity Search on Tabular Data, with the Oracle DB23ai."](https://github.com/corradodebari/vectorsearch/)
 - [2] ["Vectorize Relational Tables Using OML Feature Extraction Algorithms"](https://docs.oracle.com/en/database/oracle/oracle-database/26/vecse/vectorize-relational-tables-using-oml-feature-extraction-algorithms.html)
 
 
