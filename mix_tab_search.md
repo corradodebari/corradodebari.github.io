@@ -49,8 +49,9 @@ In this article, we show how to incorporate one or more natural-language fields 
     3.2 **Select the top-K representative texts**, typically the ones closest to the centroid.
 
     3.3 **Derive a cluster label** by asking an LLM to classify the representative texts. This can be done either by:
-      - choosing from a predefined set of labels (with descriptions)
-      - letting the LLM generate a concise label that summarizes the cluster’s theme.
+    
+    - choosing from a predefined set of labels (with descriptions)
+    - letting the LLM generate a concise label that summarizes the cluster’s theme.
 
 4.	**Enrich the dataset** by adding a new attribute to each record containing the assigned cluster label.
 
