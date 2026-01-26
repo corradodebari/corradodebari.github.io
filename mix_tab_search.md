@@ -1,7 +1,7 @@
 # Similarity Search on Tabular Data with Natural Language Fields
 
 <p align="center">
-  <img src="images/cover2.png" alt="similarity">
+  <img src="images/cover2.png" alt="similarity" width="400">
 </p>
 
 With the introduction of the vector data type and the algorithms available in Oracle Machine Learning (OML) starting from Oracle Database 23ai [2], it is now possible to vectorize records—e.g., via PCA—to support both clustering and similarity search. However, these algorithms do not natively handle fields that contain natural language effectively. This limitation is common in real-world scenarios such as CRM systems, where free-text operator notes or customer feedback coexist with structured attributes like customer profiles and product details.
