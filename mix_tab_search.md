@@ -26,7 +26,7 @@ In this article, we present a technique that seamlessly combines numerical, cate
 
 
 ## Introduction
-Let us assume we have data stored in relational form and we want to group records using k-means or perform similarity searches. A common approach is to transform each row into a numerical vector using OML Feature Extraction, which projects the data into a lower-dimensional space. For instance, Singular Value Decomposition (SVD) can be used to obtain a Principal Component Analysis (PCA)-like projection of the original table. Thanks to Oracle Machine Learning (OML) [1](https://github.com/corradodebari/vectorsearch/), [2](https://docs.oracle.com/en/database/oracle/oracle-database/26/vecse/vectorize-relational-tables-using-oml-feature-extraction-algorithms.html), this entire workflow can be executed directly inside the Oracle Database, without exporting data to external systems.
+Let us assume we have data stored in relational form and we want to group records using k-means or perform similarity searches. A common approach is to transform each row into a numerical vector using OML Feature Extraction, which projects the data into a lower-dimensional space. For instance, Singular Value Decomposition (SVD) can be used to obtain a Principal Component Analysis (PCA)-like projection of the original table. Thanks to Oracle Machine Learning (OML) [[1](https://github.com/corradodebari/vectorsearch/)], [[2](https://docs.oracle.com/en/database/oracle/oracle-database/26/vecse/vectorize-relational-tables-using-oml-feature-extraction-algorithms.html)], this entire workflow can be executed directly inside the Oracle Database, without exporting data to external systems.
 
 When combining vector search with traditional filters—e.g., applying WHERE conditions and then ranking results with ORDER BY VECTOR_DISTANCE()—the similarity computation is performed only on the filtered subset. This can unintentionally narrow the search space and introduce bias, because potentially relevant candidates are excluded before the vector distance is evaluated.
 
@@ -643,7 +643,7 @@ END;
 
 ## Vectorize the full record content: 
 
-Now, the table `NEWS_ARTICLES_LABEL` is ready to be used in a vectorization process through the PCA reduction for similarity search, that you can follow referring to the example [1](https://github.com/corradodebari/vectorsearch/) and [2](https://docs.oracle.com/en/database/oracle/oracle-database/26/vecse/vectorize-relational-tables-using-oml-feature-extraction-algorithms.html).
+Now, the table `NEWS_ARTICLES_LABEL` is ready to be used in a vectorization process through the PCA reduction for similarity search, that you can follow referring to the example [[1](https://github.com/corradodebari/vectorsearch/)] and [[2](https://docs.oracle.com/en/database/oracle/oracle-database/26/vecse/vectorize-relational-tables-using-oml-feature-extraction-algorithms.html)].
 
 ## Closing Remarks
 
