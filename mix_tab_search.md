@@ -1,7 +1,7 @@
 # Similarity Search on Tabular Data with Natural Language Fields
 
 <p align="center">
-  <img src="images/cover2.png" alt="similarity" width="400">
+  <img src="images/cover2.png" alt="similarity" width="500">
 </p>
 
 With the introduction of the vector data type and the algorithms available in Oracle Machine Learning (OML) starting from Oracle Database 23ai [2], it is now possible to vectorize records—e.g., via PCA—to support both clustering and similarity search. However, these algorithms do not natively handle fields that contain natural language effectively. This limitation is common in real-world scenarios such as CRM systems, where free-text operator notes or customer feedback coexist with structured attributes like customer profiles and product details.
@@ -44,13 +44,13 @@ In this article, we show how to incorporate one or more natural-language fields 
 
 3.	**For each cluster**:
 
-  3.1 **Compute the centroid** to represent the cluster’s “average” semantic profile.
+    3.1 **Compute the centroid** to represent the cluster’s “average” semantic profile.
 
-  3.2 **Select the top-K representative texts**, typically the ones closest to the centroid.
+    3.2 **Select the top-K representative texts**, typically the ones closest to the centroid.
 
-  3.3 **Derive a cluster label** by asking an LLM to classify the representative texts. This can be done either by:
-  - choosing from a predefined set of labels (with descriptions)
-  - letting the LLM generate a concise label that summarizes the cluster’s theme.
+    3.3 **Derive a cluster label** by asking an LLM to classify the representative texts. This can be done either by:
+      - choosing from a predefined set of labels (with descriptions)
+      - letting the LLM generate a concise label that summarizes the cluster’s theme.
 
 4.	**Enrich the dataset** by adding a new attribute to each record containing the assigned cluster label.
 
