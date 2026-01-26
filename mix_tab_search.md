@@ -120,7 +120,7 @@ select dbms_vector_chain.utl_to_embedding('hello',
 The workflow begins with an optional summarization step that reduces the original text to fit within the embedding model’s maximum input length — around 256 tokens for `cohere.embed-multilingual-v3.0` — while preserving the key semantics that will be captured in the resulting embedding vectors. If your text is already below this limit, you can skip summarization and avoid the cost of this additional step.
 
 <p align="center">
-  <img src="images/summarization.png" alt="similarity">
+  <img src="images/summarization.png" alt="similarity" width="600">
 </p>
 
 This is an example of function that implements this step:
@@ -324,7 +324,7 @@ First, you have to physically import the model in order to be used in the `DBMS_
 We now apply a k-means algorithm to the embedding vectors we generated in order to segment the entire population into *N* clusters, as illustrated in the following diagram:
 
 <p align="center">
-  <img src="images/kmeans.png" alt="similarity">
+  <img src="images/kmeans.png" alt="similarity" width="600">
 </p>
 
 This a function ready to be applied on your own data:
@@ -515,7 +515,7 @@ Now it's time to transform in a categorical value the original Natural Language 
 
 
 <p align="center">
-  <img src="images/classification.png" alt="similarity">
+  <img src="images/classification.png" alt="similarity" width="600">
 </p>
 
 After this final process, the original TextField has been replaced by a tag that represent it's content and that could be used in a PCA algorithm to embed and compare the full record content in a segmentation or similarity search activity.
