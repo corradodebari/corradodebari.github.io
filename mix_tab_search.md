@@ -33,7 +33,7 @@ When combining vector search with traditional filters—e.g., applying WHERE con
 A further challenge arises when records include fields such as free text, addresses, or other attributes with semantic content. In these cases, a purely numerical projection is insufficient: the semantic meaning of the text must be represented as well, so that the entire record can be accurately embedded into a multidimensional space and compared consistently during clustering and similarity search.
 
 <p align="center">
-  <img src="images/segment_text.png" alt="similarity">
+  <img src="images/segment_text.png" alt="similarity" width="600">
 </p>
 
 In this article, we show how to incorporate one or more natural-language fields into a single, end-to-end vectorization workflow by following these steps:
