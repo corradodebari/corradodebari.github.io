@@ -44,13 +44,13 @@ In this article, we show how to incorporate one or more natural-language fields 
 
 3.	**For each cluster**:
 
-      3.1 **Compute the centroid** to represent the cluster’s “average” semantic profile.
+3.1 **Compute the centroid** to represent the cluster’s “average” semantic profile.
 
-      3.2 **Select the top-K representative texts**, typically the ones closest to the centroid.
+3.2 **Select the top-K representative texts**, typically the ones closest to the centroid.
 
-      3.3 **Derive a cluster label** by asking an LLM to classify the representative texts. This can be done either by:
-    - choosing from a predefined set of labels (with descriptions)
-    - letting the LLM generate a concise label that summarizes the cluster’s theme.
+3.3 **Derive a cluster label** by asking an LLM to classify the representative texts. This can be done either by:
+  - choosing from a predefined set of labels (with descriptions)
+  - letting the LLM generate a concise label that summarizes the cluster’s theme.
 
 4.	**Enrich the dataset** by adding a new attribute to each record containing the assigned cluster label.
 
@@ -120,7 +120,7 @@ select dbms_vector_chain.utl_to_embedding('hello',
 The workflow begins with an optional summarization step that reduces the original text to fit within the embedding model’s maximum input length — around 256 tokens for `cohere.embed-multilingual-v3.0` — while preserving the key semantics that will be captured in the resulting embedding vectors. If your text is already below this limit, you can skip summarization and avoid the cost of this additional step.
 
 <p align="center">
-  <img src="images/summarization.png" alt="similarity" width="600">
+  <img src="images/summarization.png" alt="similarity" width="400">
 </p>
 
 This is an example of function that implements this step:
@@ -652,8 +652,6 @@ This is just a first simple example to start exploring the Oracle DB 26ai vector
 
 - [1] ["Unlock Similarity Search on Tabular Data, with the Oracle DB23ai."]("https://github.com/corradodebari/vectorsearch/")
 - [2] ["Vectorize Relational Tables Using OML Feature Extraction Algorithms"](https://docs.oracle.com/en/database/oracle/oracle-database/26/vecse/vectorize-relational-tables-using-oml-feature-extraction-algorithms.html)
-
-- Link to the full notebook: [here](workshop.dsnb/ipynb)
 
 
 ## Disclaimer
