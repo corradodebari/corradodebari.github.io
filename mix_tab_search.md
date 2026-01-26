@@ -4,7 +4,7 @@
   <img src="images/cover2.png" alt="similarity" width="500">
 </p>
 
-With the introduction of the vector data type and the algorithms available in Oracle Machine Learning (OML) starting from Oracle Database 23ai [2], it is now possible to vectorize records—e.g., via PCA—to support both clustering and similarity search. However, these algorithms do not natively handle fields that contain natural language effectively. This limitation is common in real-world scenarios such as CRM systems, where free-text operator notes or customer feedback coexist with structured attributes like customer profiles and product details.
+With the introduction of the vector data type and the algorithms available in Oracle Machine Learning (OML) starting from Oracle Database 23ai [2](https://docs.oracle.com/en/database/oracle/oracle-database/26/vecse/vectorize-relational-tables-using-oml-feature-extraction-algorithms.html), it is now possible to vectorize records—e.g., via PCA—to support both clustering and similarity search. However, these algorithms do not natively handle fields that contain natural language effectively. This limitation is common in real-world scenarios such as CRM systems, where free-text operator notes or customer feedback coexist with structured attributes like customer profiles and product details.
 
 In this article, we present a technique that seamlessly combines numerical, categorical, and natural language fields into a **single, unified vector representation** of the entire record. The objective is to improve similarity search and clustering accuracy by preserving both the numerical structure of the data and the semantic meaning of its textual content—without relying on rigid, static WHERE filters that can unnecessarily restrict the results returned.
 
@@ -26,7 +26,7 @@ In this article, we present a technique that seamlessly combines numerical, cate
 
 
 ## Introduction
-Let us assume we have data stored in relational form and we want to group records using k-means or perform similarity searches. A common approach is to transform each row into a numerical vector using OML Feature Extraction, which projects the data into a lower-dimensional space. For instance, Singular Value Decomposition (SVD) can be used to obtain a Principal Component Analysis (PCA)-like projection of the original table. Thanks to Oracle Machine Learning (OML) [1], [2], this entire workflow can be executed directly inside the Oracle Database, without exporting data to external systems.
+Let us assume we have data stored in relational form and we want to group records using k-means or perform similarity searches. A common approach is to transform each row into a numerical vector using OML Feature Extraction, which projects the data into a lower-dimensional space. For instance, Singular Value Decomposition (SVD) can be used to obtain a Principal Component Analysis (PCA)-like projection of the original table. Thanks to Oracle Machine Learning (OML) [1](https://github.com/corradodebari/vectorsearch/), [2](https://docs.oracle.com/en/database/oracle/oracle-database/26/vecse/vectorize-relational-tables-using-oml-feature-extraction-algorithms.html), this entire workflow can be executed directly inside the Oracle Database, without exporting data to external systems.
 
 When combining vector search with traditional filters—e.g., applying WHERE conditions and then ranking results with ORDER BY VECTOR_DISTANCE()—the similarity computation is performed only on the filtered subset. This can unintentionally narrow the search space and introduce bias, because potentially relevant candidates are excluded before the vector distance is evaluated.
 
@@ -49,7 +49,7 @@ In this article, we show how to incorporate one or more natural-language fields 
     3.2 **Select the top-K representative texts**, typically the ones closest to the centroid.
 
     3.3 **Derive a cluster label** by asking an LLM to classify the representative texts. This can be done either by:
-    
+
     - choosing from a predefined set of labels (with descriptions)
     - letting the LLM generate a concise label that summarizes the cluster’s theme.
 
@@ -59,7 +59,7 @@ In this article, we show how to incorporate one or more natural-language fields 
 
 At the end of this process, we obtain a vector representation that also correctly captures the meaning of the textual fields. This allows us to perform more accurate similarity searches and clustering operations.
 
-In the following source code examples, we refer to a `CNN_ARTICLES` table in which there is a column `ARTICLE` hosting natural language text.
+In the following source code examples, we refer to a `NEWS_ARTICLES` table in which there is a column `ARTICLE` hosting natural language text.
 
 ## Setup
 First you need to enable the DB23ai/26ai instance to call external http endpoint on a <USER> input, plus some other grants, running as <ADMIN>:
@@ -222,7 +222,7 @@ This is an example of call:
 BEGIN
   DBMS_OUTPUT.put_line(
     add_summary_and_embeddings(
-      p_table_name      => 'CNN_ARTICLES',
+      p_table_name      => 'NEWS_ARTICLES',
       p_text_col        => 'ARTICLE',
       p_max_tokens      => 256,
       p_summary_col     => 'SUMMARY_ART',
@@ -307,7 +307,7 @@ First, you have to physically import the model in order to be used in the `DBMS_
     BEGIN
       DBMS_OUTPUT.put_line(
         add_summary_and_embeddings(
-          p_table_name      => 'CNN_ARTICLES',
+          p_table_name      => 'NEWS_ARTICLES',
           p_text_col        => 'ARTICLE',
           p_max_tokens      => 256,
           p_summary_col     => 'SUMMARY_ART',
@@ -395,7 +395,7 @@ BEGIN
                     p_n_clusters    => 3,
                     p_record_id_col => 'ID',
                     p_embedding_col => 'ARTICLE_EMBEDDING',
-                    p_table_name    => 'CNN_ARTICLES',
+                    p_table_name    => 'NEWS_ARTICLES',
                     p_model_name    => 'KM_EMB'
                   );
   DBMS_OUTPUT.PUT_LINE('Created model: ' || v_model_name);
@@ -502,7 +502,7 @@ BEGIN
             p_embedding_col  => 'ARTICLE_EMBEDDING',
             k                => 10,
             vector_size      => 1024,
-            p_source_table   => 'CNN_ARTICLES',
+            p_source_table   => 'NEWS_ARTICLES',
             p_model_name        => 'KM_EMB'
           );
 
@@ -523,14 +523,14 @@ After this final process, the original TextField has been replaced by a tag that
 Let's prepare the table to store the original contents and the related label:
 
 ```sql
-DROP TABLE cnn_articles_label CASCADE CONSTRAINTS;
+DROP TABLE news_articles_label CASCADE CONSTRAINTS;
 
-CREATE TABLE cnn_articles_label AS
+CREATE TABLE news_articles_label AS
 SELECT
   a.*,
   t.clus,
   CAST(NULL AS VARCHAR2(100)) AS cluster_label
-FROM cnn_articles a
+FROM news_articles a
 LEFT JOIN topkrow t
   ON (t.des IS NOT NULL AND a.summary_art IS NOT NULL
       AND DBMS_LOB.COMPARE(t.des, a.summary_art) = 0);
@@ -628,12 +628,12 @@ END;
 
 ```
 
-This could be a call example of call applied on the `cnn_articles_label` just created:
+This could be a call example of call applied on the `news_articles_label` just created:
 
 ```sql
 BEGIN
   DBMS_OUTPUT.PUT_LINE(
-    label_clusters('TOPKROW', 'CNN_ARTICLES_LABEL')
+    label_clusters('TOPKROW', 'NEWS_ARTICLES_LABEL')
   );
 END;
 /
@@ -643,11 +643,11 @@ END;
 
 ## Vectorize the full record content: 
 
-Now, the table `CNN_ARTICLES_LABEL` is ready to be used in a vectorization process through the PCA reduction for similarity search, that you can follow referring to the example [1] and [2].
+Now, the table `NEWS_ARTICLES_LABEL` is ready to be used in a vectorization process through the PCA reduction for similarity search, that you can follow referring to the example [1](https://github.com/corradodebari/vectorsearch/) and [2](https://docs.oracle.com/en/database/oracle/oracle-database/26/vecse/vectorize-relational-tables-using-oml-feature-extraction-algorithms.html).
 
 ## Closing Remarks
 
-This is just a first simple example to start exploring the Oracle DB 26ai vector store with OML and external LLM for embeddings to performe similarity search and segmentation across numeric, categorical and text fields.
+This is just a proposal, through a simple example, to start exploring the Oracle DB 26ai vector store with OML and external LLM to apply similarity search and segmentation to any kind of types combined in an unique search, to preserve the semantic of the all record's field and improve the accuracy across numeric, categorical and text fields.
 
 ## Reference
 
