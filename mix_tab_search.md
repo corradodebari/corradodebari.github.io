@@ -243,7 +243,7 @@ First, you have to physically import the model in order to be used in the `DBMS_
 
 1. Download the embedding model in ONNX
 
-    For example, we download and going to use the model: **all_MiniLM_L12_v2.onnx**, you can find [here]("https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/VBRD9P8ZFWkKvnfhrWxkpPe8K03-JIoM5h_8EJyJcpE80c108fuUjg7R5L5O7mMZ/n/adwc4pm/b/OML-Resources/o/all_MiniLM_L12_v2_augmented.zip").
+    For example, we download and going to use the model: **all_MiniLM_L12_v2.onnx**, you can find [here](https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/TtH6hL2y25EypZ0-rrczRZ1aXp7v1ONbRBfCiT-BDBN8WLKQ3lgyW6RxCfIFLdA6/n/adwc4pm/b/OML-ai-models/o/all_MiniLM_L12_v2_augmented.zip).
 
 2. Give permissions to your user to use the embedding model in ONNX
 
