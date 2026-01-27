@@ -267,7 +267,7 @@ First, you have to physically import the model in order to be used in the `DBMS_
 
 3. Import the model
 
-    Then, as a `<USER>`, login end execute
+    Then, as a `<USER>`, login
     ```bash
     sqlplus <USER>/<PASSWORD>@//localhost:1521/<PDB_NAME>
     ```
