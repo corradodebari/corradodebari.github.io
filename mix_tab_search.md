@@ -649,7 +649,7 @@ Now, the table `NEWS_ARTICLES_LABEL` is ready to be used in a vectorization proc
 
 This is just a proposal, through a simple example, to start exploring the Oracle DB 26ai vector store with OML and external LLM to apply similarity search and segmentation to any kind of types combined in an unique search, to preserve the semantic of the all record's field and improve the accuracy across numeric, categorical and text fields.
 
-## Reference
+## References
 
 - [1] ["Unlock Similarity Search on Tabular Data, with the Oracle DB23ai."](https://github.com/corradodebari/vectorsearch/)
 - [2] ["Vectorize Relational Tables Using OML Feature Extraction Algorithms"](https://docs.oracle.com/en/database/oracle/oracle-database/26/vecse/vectorize-relational-tables-using-oml-feature-extraction-algorithms.html)
