@@ -26,14 +26,7 @@ ssh -i <ssh-public-key.key> -L 8080:10.107.38.138:80 opc@<OCI_VM_IP>
 This will allow to access via local browser to the console at: `http://127.0.0.1:8080/consoleui/`
 
 ## Setup the environment
-- Get the EXTERNAL_IP:
-```shell
-kubectl get svc -n istio-system
-```
-
-example:10.107.38.138
-
-- Prepare the env and set the standard end-point for engine communication, slightly different by standard Conductor URL:
+- Prepare the env:
 
 ```shell
 
@@ -42,9 +35,13 @@ source conductor/bin/activate
 python -m pip install -U "pip<26" setuptools wheel
 
 python3.11 install conductor-python
-
 ```
 
+- set the standard end-point for engine communication, slightly different by standard Conductor URL:
+  
+```shell
+CONDUCTOR_SERVER_URL=http://127.0.0.1:8080/workflow-server/api  
+```
 ## Install the example workflow
 
 Prepare and create a new workflow based on the `simple_worker.json` with:
