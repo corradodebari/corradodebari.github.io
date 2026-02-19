@@ -78,6 +78,7 @@ python3.11 install conductor-python
 
 - To run a simple chatbot on OpenAI, execute:
 ```
+source conductor/bin/activate
 export CONDUCTOR_SERVER_URL=http://localhost:8080/workflow-server/api  
 python3.11 llm_chat_human_in_loop.py
 ```
@@ -135,6 +136,7 @@ As you can see, at `http://localhost:8080/workflow-server/api/workflow/7fca1c9b-
 
 - To run a RAG chatbot, execute:
 ```
+source conductor/bin/activate
 export CONDUCTOR_SERVER_URL=http://localhost:8080/workflow-server/api  
 python3.11 llm_chat_human_in_loop_rag.py
 ```
