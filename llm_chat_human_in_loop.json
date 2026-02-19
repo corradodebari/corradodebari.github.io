@@ -1,0 +1,129 @@
+{
+  "createTime": 0,
+  "updateTime": 1771268474172,
+  "name": "llm_chat_human_in_loop",
+  "version": 1,
+  "tasks": [
+    {
+      "name": "set_system_prompt",
+      "taskReferenceName": "set_system_prompt",
+      "inputParameters": {
+        "system_prompt": "You are a helpful assistant that knows about science. Answer questions clearly and concisely. If you don't know something, say so. Stay on topic."
+      },
+      "type": "SET_VARIABLE",
+      "decisionCases": {},
+      "defaultCase": [],
+      "forkTasks": [],
+      "startDelay": 0,
+      "joinOn": [],
+      "optional": false,
+      "defaultExclusiveJoinTask": [],
+      "asyncComplete": false,
+      "loopOver": [],
+      "onStateChange": {},
+      "permissive": false
+    },
+    {
+      "name": "loop",
+      "taskReferenceName": "loop",
+      "inputParameters": {},
+      "type": "DO_WHILE",
+      "decisionCases": {},
+      "defaultCase": [],
+      "forkTasks": [],
+      "startDelay": 0,
+      "joinOn": [],
+      "optional": false,
+      "defaultExclusiveJoinTask": [],
+      "asyncComplete": false,
+      "loopCondition": "if ( $.loop.iteration < 5 ) { true; } else { false; }",
+      "loopOver": [
+        {
+          "name": "user_input_ref",
+          "taskReferenceName": "user_input_ref",
+          "inputParameters": {
+            "duration": "",
+            "until": ""
+          },
+          "type": "WAIT",
+          "decisionCases": {},
+          "defaultCase": [],
+          "forkTasks": [],
+          "startDelay": 0,
+          "joinOn": [],
+          "optional": false,
+          "defaultExclusiveJoinTask": [],
+          "asyncComplete": false,
+          "loopOver": [],
+          "onStateChange": {},
+          "permissive": false
+        },
+        {
+          "name": "human_chat_collect_history",
+          "taskReferenceName": "collect_history_ref",
+          "inputParameters": {
+            "user_input": "${user_input_ref.output.question}",
+            "history": "${collect_history_ref.output.result}",
+            "assistant_response": "${chat_complete_ref.output.response}",
+            "system_prompt": "${workflow.variables.system_prompt}"
+          },
+          "type": "SIMPLE",
+          "decisionCases": {},
+          "defaultCase": [],
+          "forkTasks": [],
+          "startDelay": 0,
+          "joinOn": [],
+          "optional": false,
+          "defaultExclusiveJoinTask": [],
+          "asyncComplete": false,
+          "loopOver": [],
+          "onStateChange": {},
+          "permissive": false
+        },
+        {
+          "name": "chat_complete_ref",
+          "taskReferenceName": "chat_complete_ref",
+          "inputParameters": {
+            "llmProfile": {
+              "name": "openai-dev",
+              "model": "gpt-4o-mini"
+            },
+            "prompt": "${collect_history_ref.output.result}",
+            "promptTemplate": "",
+            "promptVariables": {},
+            "temperature": 0.8,
+            "maxTokens": 1024,
+            "top_k": 40,
+            "top_p": 0.9
+          },
+          "type": "GENAI_TASK",
+          "decisionCases": {},
+          "defaultCase": [],
+          "forkTasks": [],
+          "startDelay": 0,
+          "joinOn": [],
+          "optional": false,
+          "defaultExclusiveJoinTask": [],
+          "asyncComplete": false,
+          "loopOver": [],
+          "onStateChange": {},
+          "permissive": false
+        }
+      ],
+      "onStateChange": {},
+      "permissive": false
+    }
+  ],
+  "inputParameters": [],
+  "outputParameters": {},
+  "failureWorkflow": "",
+  "schemaVersion": 2,
+  "restartable": true,
+  "workflowStatusListenerEnabled": false,
+  "timeoutPolicy": "TIME_OUT_WF",
+  "timeoutSeconds": 300,
+  "variables": {},
+  "inputTemplate": {},
+  "enforceSchema": false,
+  "metadata": {}
+}

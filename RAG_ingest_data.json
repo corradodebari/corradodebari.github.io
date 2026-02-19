@@ -1,0 +1,79 @@
+{
+  "createTime": 1770208410793,
+  "updateTime": 1771321380746,
+  "name": "RAG_ingest_data",
+  "description": "Ingests data from a local file",
+  "version": 2,
+  "tasks": [
+    {
+      "name": "create_vector_table",
+      "taskReferenceName": "create_vector_table",
+      "inputParameters": {
+        "databaseProfile": "oracle-database-livelabuser",
+        "sqlStatement": "CREATE TABLE \"LIVELABSUSER\".\"JAVA_VECTORS\" \n   (\t\"ID\" VARCHAR2(36 BYTE), \n\t\"CONTENT\" CLOB, \n\t\"METADATA\" JSON, \n\t\"EMBEDDING\" VECTOR\n   );",
+        "parameters": [],
+        "type": "UPDATE"
+      },
+      "type": "SQL",
+      "decisionCases": {},
+      "defaultCase": [],
+      "forkTasks": [],
+      "startDelay": 0,
+      "joinOn": [],
+      "optional": false,
+      "defaultExclusiveJoinTask": [],
+      "asyncComplete": false,
+      "loopOver": [],
+      "onStateChange": {},
+      "permissive": false
+    },
+    {
+      "name": "genai_ingestion",
+      "taskReferenceName": "genai_ingestion",
+      "inputParameters": {
+        "embeddingModelProfile": {
+          "name": "openai-dev",
+          "model": "text-embedding-3-large"
+        },
+        "dataStoreProfile": "oracle-database-livelabuser",
+        "tableName": "java_vectors",
+        "data": {
+          "source": "local",
+          "filePath": "get-started-java-development-2024.pdf"
+        },
+        "dimensions": 3072,
+        "chunkSize": 512,
+        "minChunkSizeChars": 80,
+        "minChunkLengthToEmbed": 5,
+        "maxNumChunks": 10000,
+        "keepSeparator": true,
+        "indexType": "HNSW",
+        "distanceType": "COSINE"
+      },
+      "type": "GENAI_INGESTION",
+      "decisionCases": {},
+      "defaultCase": [],
+      "forkTasks": [],
+      "startDelay": 0,
+      "joinOn": [],
+      "optional": false,
+      "defaultExclusiveJoinTask": [],
+      "asyncComplete": false,
+      "loopOver": [],
+      "onStateChange": {},
+      "permissive": false
+    }
+  ],
+  "inputParameters": [],
+  "outputParameters": {},
+  "failureWorkflow": "",
+  "schemaVersion": 2,
+  "restartable": true,
+  "workflowStatusListenerEnabled": false,
+  "timeoutPolicy": "ALERT_ONLY",
+  "timeoutSeconds": 0,
+  "variables": {},
+  "inputTemplate": {},
+  "enforceSchema": true,
+  "metadata": {}
+}
