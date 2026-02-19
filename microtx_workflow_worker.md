@@ -6,7 +6,7 @@ In this tutorial, I'll show how to adapt the basic Python worker example [Python
 
 It's include a second example to integrate an external DB resource, like sqlite in this case, but you can adapt to other DBs than Oracle DB or Postgres currently supported.
 
-**-->** Next MicroTx Workflow episode**: [MicroTx Workflows Chatbot/RAG](https://corradodebari.github.io/llm_chat_human_in_loop.html)
+**--> Next MicroTx Workflow episode**: [MicroTx Workflows Chatbot/RAG](https://corradodebari.github.io/llm_chat_human_in_loop.html)
 
 ## Setup the connection to the OCI VM
 
