@@ -2,7 +2,10 @@ from conductor.client.automator.task_handler import TaskHandler
 from conductor.client.configuration.configuration import Configuration
 from conductor.client.workflow.executor.workflow_executor import WorkflowExecutor
 
-from sqlite_query import create_fake_database,execute_sqlite_query
+# To have the worker references
+import sqlite_query
+
+from sqlite_query import create_fake_database
 
 
 def main():

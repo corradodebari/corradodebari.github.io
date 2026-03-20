@@ -1,0 +1,197 @@
+{
+  "createTime": 1773681708928,
+  "updateTime": 1773774429914,
+  "name": "llm_chat_openai_api",
+  "version": 2,
+  "tasks": [
+    {
+      "name": "set_system_prompt",
+      "taskReferenceName": "set_system_prompt",
+      "inputParameters": {
+        "system_prompt": "You are a helpful assistant that knows about documentation provided. Answer questions clearly and concisely. If you don't know something, say so. Stay on topic."
+      },
+      "type": "SET_VARIABLE",
+      "decisionCases": {},
+      "defaultCase": [],
+      "forkTasks": [],
+      "startDelay": 0,
+      "joinOn": [],
+      "optional": false,
+      "defaultExclusiveJoinTask": [],
+      "asyncComplete": false,
+      "loopOver": [],
+      "onStateChange": {},
+      "permissive": false
+    },
+    {
+      "name": "loop",
+      "taskReferenceName": "loop",
+      "inputParameters": {},
+      "type": "DO_WHILE",
+      "decisionCases": {},
+      "defaultCase": [],
+      "forkTasks": [],
+      "startDelay": 0,
+      "joinOn": [],
+      "optional": false,
+      "defaultExclusiveJoinTask": [],
+      "asyncComplete": false,
+      "loopCondition": "if ( $.loop.iteration < 5 ) { true; } else { false; }",
+      "loopOver": [
+        {
+          "name": "user_input",
+          "taskReferenceName": "user_input_ref",
+          "inputParameters": {
+            "duration": "",
+            "until": ""
+          },
+          "type": "WAIT",
+          "decisionCases": {},
+          "defaultCase": [],
+          "forkTasks": [],
+          "startDelay": 0,
+          "joinOn": [],
+          "optional": false,
+          "defaultExclusiveJoinTask": [],
+          "asyncComplete": false,
+          "loopOver": [],
+          "onStateChange": {},
+          "permissive": false
+        },
+        {
+          "name": "get_last_message",
+          "taskReferenceName": "get_last_message",
+          "inputParameters": {
+            "evaluatorType": "javascript",
+            "expression": "(function(){\n  var msgs = $.data;\n  var lastUserMessage = '';\n  for (var i = msgs.length - 1; i >= 0; i--) {\n    if (msgs[i].role === 'user') {\n      lastUserMessage = msgs[i].content;\n      break;\n    }\n  }\n  return lastUserMessage;\n})()\n",
+            "data": "${user_input_ref.output.messages}"
+          },
+          "type": "INLINE",
+          "decisionCases": {},
+          "defaultCase": [],
+          "forkTasks": [],
+          "startDelay": 0,
+          "joinOn": [],
+          "optional": false,
+          "defaultExclusiveJoinTask": [],
+          "asyncComplete": false,
+          "loopOver": [],
+          "onStateChange": {},
+          "permissive": false
+        },
+        {
+          "name": "rephrasing",
+          "taskReferenceName": "rephrasing_ref",
+          "inputParameters": {
+            "llmProfile": {
+              "name": "openai-dev",
+              "model": "gpt-4o-mini"
+            },
+            "prompt": "#Considering this context in conversation history:\n${user_input_ref.output.messages}\n#Rephrase the last question\n\n",
+            "promptTemplate": "rewrite",
+            "promptVariables": {
+              "latest_question": "${user_input_ref.output.question}",
+              "history": "${collect_history_ref.output.result}"
+            },
+            "temperature": 0.8,
+            "maxTokens": 1024,
+            "top_k": 40,
+            "top_p": 0.9
+          },
+          "type": "GENAI_TASK",
+          "decisionCases": {},
+          "defaultCase": [],
+          "forkTasks": [],
+          "startDelay": 0,
+          "joinOn": [],
+          "optional": false,
+          "defaultExclusiveJoinTask": [],
+          "asyncComplete": false,
+          "loopOver": [],
+          "onStateChange": {},
+          "permissive": false
+        },
+        {
+          "name": "doc_retriever",
+          "taskReferenceName": "doc_retriever_ref",
+          "inputParameters": {
+            "llmProfile": {
+              "name": "openai-dev",
+              "model": "gpt-4o-mini"
+            },
+            "temperature": 0.8,
+            "maxTokens": 1024,
+            "top_k": 40,
+            "embeddingModelProfile": {
+              "name": "openai-dev",
+              "model": "text-embedding-3-large"
+            },
+            "dataStoreProfile": "microtx",
+            "tableName": "JAVA_VECTORS",
+            "query": "${rephrasing_ref.output}",
+            "dimensions": "512",
+            "topK": 5,
+            "ragType": "naive",
+            "indexType": "HNSW",
+            "distanceType": "COSINE"
+          },
+          "type": "GENAI_RETRIEVE",
+          "decisionCases": {},
+          "defaultCase": [],
+          "forkTasks": [],
+          "startDelay": 0,
+          "joinOn": [],
+          "optional": false,
+          "defaultExclusiveJoinTask": [],
+          "asyncComplete": false,
+          "loopOver": [],
+          "onStateChange": {},
+          "permissive": false
+        },
+        {
+          "name": "chat_complete",
+          "taskReferenceName": "chat_complete_ref",
+          "inputParameters": {
+            "llmProfile": {
+              "name": "openai-dev",
+              "model": "gpt-4o-mini"
+            },
+            "prompt": "#Using these info:\n${doc_retriever_ref.output}\n\n#Answer last question in conversation history:\n${user_input_ref.output.messages}",
+            "promptTemplate": "",
+            "promptVariables": {},
+            "temperature": 0.8,
+            "maxTokens": 1024,
+            "top_k": 40,
+            "top_p": 0.9
+          },
+          "type": "GENAI_TASK",
+          "decisionCases": {},
+          "defaultCase": [],
+          "forkTasks": [],
+          "startDelay": 0,
+          "joinOn": [],
+          "optional": false,
+          "defaultExclusiveJoinTask": [],
+          "asyncComplete": false,
+          "loopOver": [],
+          "onStateChange": {},
+          "permissive": false
+        }
+      ],
+      "onStateChange": {},
+      "permissive": false
+    }
+  ],
+  "inputParameters": [],
+  "outputParameters": {},
+  "failureWorkflow": "",
+  "schemaVersion": 2,
+  "restartable": true,
+  "workflowStatusListenerEnabled": false,
+  "timeoutPolicy": "TIME_OUT_WF",
+  "timeoutSeconds": 300,
+  "variables": {},
+  "inputTemplate": {},
+  "enforceSchema": false,
+  "metadata": {}
+}

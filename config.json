@@ -1,0 +1,12 @@
+{
+  "LLM_MODEL": "microtx",
+  "WORKFLOW_NAME": "llm_chat_openai_api",
+  "WORKFLOW_VERSION": 2,
+  "INPUT_TASK": "user_input_ref",
+  "OUTPUT_TASK": "chat_complete_ref",
+  "IDLE_TIMEOUT": 300,
+  "KEYS_WORKFLOWS": {
+    "ABC12345": "",
+    "ABC67890": ""
+  }
+}
