@@ -59,6 +59,6 @@ def execute_sqlite_query(connection_string:str, query:str):
 
         conn.close()
 
-        return json.dumps(data)
+        return data
     except Exception as e:
         return json.dumps({"error": str(e)})
