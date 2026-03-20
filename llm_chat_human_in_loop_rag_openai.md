@@ -27,7 +27,7 @@ The Python server (`llm_chat_human_in_loop_rag_openai.py`) acts as a bridge: it 
 ## Prerequisites
 
 - **MicroTx server** with AI/LLM support enabled
-- **Workflow** `llm_chat_openai_api` (v2) imported into MicroTx Workflow (see [Workflow Setup](#workflow-setup))
+- **Workflow** `llm_chat_openai_api` (v2) imported into MicroTx Workflow (see **Workflow Setup** below)
 - **Python 3.11+**
 - **Oracle LiveLab VM** (optional — for the pre-configured environment)
 
@@ -119,6 +119,12 @@ Then:
    - **API Key**: one of the keys from `KEYS_WORKFLOWS` (e.g. `ABC12345`)
 3. The model `microtx` (or your configured `LLM_MODEL`) should appear in the model list
 
+Conversation example in Open WebUI:
+
+<p align="center">
+  <img src="images/conversation_sample.png" alt="Open WebUI conversation sample" width="600">
+</p>
+
 ### Disable auto-generation features
 
 Open WebUI sends automatic requests (title generation, follow-up suggestions) to your endpoint, which interfere with the MicroTx Workflow. Disable them in:
@@ -157,7 +163,7 @@ The workflow follows this pattern:
    - **doc_retriever** (`doc_retriever_ref`) — retrieves relevant chunks from the vector store
    - **chat_complete** (`chat_complete_ref`) — generates the final answer using retrieved context
 
-For detailed instructions on setting up the RAG pipeline (vector store, prompt templates, document ingestion), see the [interactive chatbot guide](llm_chat_human_in_loop.md).
+For detailed instructions on setting up the RAG pipeline (vector store, prompt templates, document ingestion), see the [interactive chatbot guide](https://corradodebari.github.io/llm_chat_human_in_loop.html).
 
 ## Disclaimer
 
