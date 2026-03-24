@@ -108,7 +108,7 @@ The workflow is done as shown in this picture:
    - **doc_retriever** (`doc_retriever_ref`) — retrieves relevant chunks from the vector store
    - **chat_complete** (`chat_complete_ref`) — generates the final answer using retrieved context
 
-For detailed instructions on setting up the RAG pipeline (vector store, prompt templates, document ingestion), see the [interactive chatbot guide](llm_chat_human_in_loop.md).
+For detailed instructions on setting up the RAG pipeline (vector store, prompt templates, document ingestion), see the [interactive chatbot guide](https://corradodebari.github.io/llm_chat_human_in_loop.html).
 
 
 ## Running
