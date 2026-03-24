@@ -58,6 +58,21 @@
     .copy-btn:hover {
       opacity: 1;
     }
+
+    /* Tables */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1em 0;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px 12px;
+      text-align: left;
+    }
+    th {
+      background: #f0f0f0;
+    }
   </style>
 </head>
 <body>
@@ -72,6 +87,9 @@
       root.querySelectorAll('pre').forEach(pre => {
         // avoid duplicates
         if (pre.querySelector('.copy-btn')) return;
+        // skip code blocks without a language class (e.g. ASCII art diagrams)
+        const codeEl = pre.querySelector('code');
+        if (codeEl && !codeEl.className) return;
         const btn = document.createElement('button');
         btn.className = 'copy-btn';
         btn.textContent = 'Copy';
