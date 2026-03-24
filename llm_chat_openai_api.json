@@ -36,7 +36,7 @@
       "optional": false,
       "defaultExclusiveJoinTask": [],
       "asyncComplete": false,
-      "loopCondition": "if ( $.loop.iteration < 5 ) { true; } else { false; }",
+      "loopCondition": "if ( $.loop.iteration < 50 ) { true; } else { false; }",
       "loopOver": [
         {
           "name": "user_input",
