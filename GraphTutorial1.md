@@ -3,7 +3,7 @@
 This tutorial helps you understand the basics of building a Property Graph in Oracle Database. Starting from simple relational tables, you will progressively learn how to define a property graph, query it using SQL/PGQ (Property Graph Queries), and ultimately combine relational tables with graph pattern matching — all within the same SQL statement. The example builds a **professional network** graph in Oracle AI Database 26ai.
 
 <p align="center">
-  <img src="images/graph/person-knows.png" alt="Property Graph concept — Graph Layer mapped to Relational Layer" style="max-width: 600px; width: 100%;">
+  <img src="images/graph/person_knows.png" alt="Property Graph concept — Graph Layer mapped to Relational Layer" style="max-width: 600px; width: 100%;">
 </p>
 
 ---
