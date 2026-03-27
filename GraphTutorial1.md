@@ -10,7 +10,7 @@ This tutorial helps you understand the basics of building a Property Graph in Or
 
 ## Prerequisites
 
-- **Oracle Database 23ai** (or later) with SQL Property Graph support.
+- **Oracle AI Database version 23**(or later) with SQL Property Graph support.
 - A database user with `CREATE TABLE` and `CREATE PROPERTY GRAPH` privileges.
 - **Oracle SQL Developer Extension for VS Code** — used to connect to the database and run SQL scripts directly from VS Code.
 
@@ -42,6 +42,8 @@ This tutorial helps you understand the basics of building a Property Graph in Or
 12. [Query 5 — Relational-Graph Fusion with CROSS JOIN LATERAL](#step-12-query-5--relational-graph-fusion-with-cross-join-lateral)
 13. [Final Graph Visualization](#step-13-final-graph-visualization)
 14. [Summary](#summary)
+
+**Full sql source code: [[here](https://raw.githubusercontent.com/corradodebari/corradodebari.github.io/refs/heads/main/GraphTutorial.sql)]**  
 
 ---
 
