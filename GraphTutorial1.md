@@ -3,7 +3,7 @@
 This tutorial helps you understand the basics of building a Property Graph in Oracle Database. Starting from simple relational tables, you will progressively learn how to define a property graph, query it using SQL/PGQ (Property Graph Queries), and ultimately combine relational tables with graph pattern matching — all within the same SQL statement. The example builds a **professional network** graph in Oracle AI Database 26ai.
 
 <p align="center">
-  <img src="images/graph/person-knows.png" alt="Property Graph concept — Graph Layer mapped to Relational Layer">
+  <img src="images/graph/person-knows.png" alt="Property Graph concept — Graph Layer mapped to Relational Layer" width="400">
 </p>
 
 ---
@@ -15,13 +15,13 @@ This tutorial helps you understand the basics of building a Property Graph in Or
 - **Oracle SQL Developer Extension for VS Code** — used to connect to the database and run SQL scripts directly from VS Code.
 
   <p align="center">
-    <img src="images/graph/SQLDev.png" alt="Oracle SQL Developer Extension for VS Code">
+    <img src="images/graph/SQLDev.png" alt="Oracle SQL Developer Extension for VS Code" width="400">
   </p>
 
 - **Oracle SQL Developer Graph Visualization for VS Code** — used to visualize and interact with your Oracle SQL Property Graphs. Search for "graph visualization" in the VS Code Extensions Marketplace and install the one published by **Oracle Corporation**.
 
   <p align="center">
-    <img src="images/graph/GraphVisualization.png" alt="Graph Visualization extension detail page">
+    <img src="images/graph/GraphVisualization.png" alt="Graph Visualization extension detail page" width="400">
   </p>
 
 ---
@@ -330,7 +330,7 @@ ORDER BY since;
 You can visualize the result of any `GRAPH_TABLE` query as an interactive diagram. After you have selected the query in the SQL Developer worksheet, click the **Graph Visualization** icon in the VS Code toolbar:
 
 <p align="center">
-  <img src="images/graph/generate_graph.png" alt="Click the Graph Visualization icon to generate a graph diagram">
+  <img src="images/graph/generate_graph.png" alt="Click the Graph Visualization icon to generate a graph diagram" width="400">
 </p>
 
 This opens the Graph Visualization panel, where vertices and edges from your query are rendered as a navigable diagram.
@@ -340,13 +340,13 @@ This opens the Graph Visualization panel, where vertices and edges from your que
 In the right-hand panel, each vertex label (e.g., COMPANY, PERSON) is listed under **Vertices**. Click the **pencil icon** next to a label to customize its appearance — you can change the color, size, caption, and icon:
 
 <p align="center">
-  <img src="images/graph/edit_style.png" alt="Click Edit Style to customize a vertex label">
+  <img src="images/graph/edit_style.png" alt="Click Edit Style to customize a vertex label" width="400">
 </p>
 
 For example, you can assign the **industry** icon to the `COMPANY` nodes to make them visually distinct from people:
 
 <p align="center">
-  <img src="images/graph/industry_icon.png" alt="Selecting the industry icon for the COMPANY vertex style">
+  <img src="images/graph/industry_icon.png" alt="Selecting the industry icon for the COMPANY vertex style" width="400">
 </p>
 
 ### Navigating the graph
@@ -356,13 +356,13 @@ Once the graph is rendered, you can click on any element to inspect its properti
 **Click on a vertex** to see its details. For example, clicking on a Company node reveals its `COMPANY_NAME` and `SECTOR`:
 
 <p align="center">
-  <img src="images/graph/vertex.png" alt="Inspecting a vertex — Company node showing its properties">
+  <img src="images/graph/vertex.png" alt="Inspecting a vertex — Company node showing its properties" width="400">
 </p>
 
 **Click on an edge** to see the relationship details. For example, clicking on a `WORKS_AT` edge shows the `SINCE_YEAR`, along with the source person and the target company:
 
 <p align="center">
-  <img src="images/graph/edge.png" alt="Inspecting an edge — WORKS_AT edge showing its properties">
+  <img src="images/graph/edge.png" alt="Inspecting an edge — WORKS_AT edge showing its properties" width="400">
 </p>
 
 ---
@@ -575,7 +575,7 @@ This pattern is powerful because it lets you use a standard relational table to 
 After running all the queries and customizing the node styles as shown in Step 7, you get a clear, interactive visualization of the entire professional network:
 
 <p align="center">
-  <img src="images/graph/final.png" alt="Final graph visualization of the professional network">
+  <img src="images/graph/final.png" alt="Final graph visualization of the professional network" width="400">
 </p>
 
 The graph shows all three vertex types (**Person**, **Company**, **Skill**) with distinct icons and colors, connected by labeled edges (**WORKS_AT**, **KNOWS**, **HAS_SKILL**).
