@@ -340,13 +340,13 @@ This opens the Graph Visualization panel, where vertices and edges from your que
 In the right-hand panel, each vertex label (e.g., COMPANY, PERSON) is listed under **Vertices**. Click the **pencil icon** next to a label to customize its appearance — you can change the color, size, caption, and icon:
 
 <p align="center">
-  <img src="images/graph/edit_style.png" alt="Click Edit Style to customize a vertex label" style="max-width: 600px; width: 100%;">
+  <img src="images/graph/edit_style.png" alt="Click Edit Style to customize a vertex label" style="max-width: 300px; width: 100%;">
 </p>
 
 For example, you can assign the **industry** icon to the `COMPANY` nodes to make them visually distinct from people:
 
 <p align="center">
-  <img src="images/graph/industry_icon.png" alt="Selecting the industry icon for the COMPANY vertex style" style="max-width: 600px; width: 100%;">
+  <img src="images/graph/industry_icon.png" alt="Selecting the industry icon for the COMPANY vertex style" style="max-width: 300px; width: 100%;">
 </p>
 
 ### Navigating the graph
