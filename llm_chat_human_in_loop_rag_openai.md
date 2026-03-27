@@ -2,7 +2,7 @@
 
 This demo exposes an interactive chatbot running as a process on **MicroTx Workflow** as an **OpenAI-compatible API** endpoint, allowing any OpenAI client — including [Open WebUI](https://github.com/open-webui/open-webui) used and tested in this tutorial, to chat with a RAG-powered workflow.
 
-The Python server (`llm_chat_human_in_loop_rag_openai.py`) acts as a bridge: it receives standard `/v1/chat/completions` requests, forwards messages to a running MicroTx Workflow workflow via a WAIT task, polls for the LLM response, and returns it in OpenAI format (streaming and non-streaming).
+The Python server [llm_chat_human_in_loop_rag_openai.py](./llm_chat_human_in_loop_rag_openai.py) acts as a bridge: it receives standard `/v1/chat/completions` requests, forwards messages to a running MicroTx Workflow workflow via a WAIT task, polls for the LLM response, and returns it in OpenAI format (streaming and non-streaming).
 
 ## Architecture
 
@@ -108,7 +108,7 @@ The workflow is done as shown in this picture:
    - **doc_retriever** (`doc_retriever_ref`) — retrieves relevant chunks from the vector store
    - **chat_complete** (`chat_complete_ref`) — generates the final answer using retrieved context
 
-For detailed instructions on setting up the RAG pipeline (vector store, prompt templates, document ingestion), see the [interactive chatbot guide](llm_chat_human_in_loop.md).
+For detailed instructions on setting up the RAG pipeline (vector store, prompt templates, document ingestion), see the [interactive chatbot guide](https://corradodebari.github.io/llm_chat_human_in_loop.html).
 
 
 ## Running
