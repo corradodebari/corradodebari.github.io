@@ -78,6 +78,8 @@ INSERT INTO skills (skill_name, category) VALUES ('Kubernetes',      'Infrastruc
 INSERT INTO skills (skill_name, category) VALUES ('Python',          'Language');
 INSERT INTO skills (skill_name, category) VALUES ('Machine Learning','AI');
 
+COMMIT;
+
 -------------------------------------------------------
 -- EDGES: who works where
 -------------------------------------------------------
