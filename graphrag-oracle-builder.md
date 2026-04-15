@@ -117,7 +117,7 @@ Database result:
 ## How To Use
 In Codex, installed in VS Code, use the built in skill to install from github repo:
 
-```bash
+```
 skill-installer from https://github.com/corradodebari/skills/tree/main/graphrag-oracle-builder
 ```
 
@@ -223,4 +223,3 @@ FROM GRAPH_TABLE (
 
 ## Disclaimer
 *The views expressed in this paper are my own and do not necessarily reflect the views of Oracle.*
-

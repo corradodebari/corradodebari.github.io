@@ -94,13 +94,16 @@
     // Insert copy buttons into each code block
     function addCopyButtons(root) {
       root.querySelectorAll('pre').forEach(pre => {
+        const codeEl = pre.querySelector('code');
+        // Do not show copy button for bash fenced blocks.
+        if (codeEl && codeEl.classList.contains('language-bash')) return;
         // avoid duplicates
         if (pre.querySelector('.copy-btn')) return;
         const btn = document.createElement('button');
         btn.className = 'copy-btn';
         btn.textContent = 'Copy';
         btn.addEventListener('click', async () => {
-          const code = pre.querySelector('code').innerText;
+          const code = codeEl.innerText;
           try {
             await navigator.clipboard.writeText(code);
             btn.textContent = 'Copied!';
