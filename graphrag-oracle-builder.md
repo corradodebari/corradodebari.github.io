@@ -137,6 +137,7 @@ You need the following modules:
 - Visual Studio Code
 - Oracle SQL Developer Extension for VS Code 
 - Oracle AI Database version 23ai or later
+- Oracle SQL Developer Graph Visualization for VS Code
 - Oracle SQLcl installed and configured as MCP server.
 - Codex – OpenAI’s coding agent plugin for VSCode
 
