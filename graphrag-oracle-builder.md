@@ -7,7 +7,7 @@
   <a href="https://www.oracle.com/database/">
     <img alt="Oracle AI DB 26ai" src="https://img.shields.io/badge/Oracle-AI%20DB%2026ai-F80000?logo=oracle&logoColor=white">
   </a>
-  <a href="https://openai.com/">
+  <a href="https://openai.com/codex/">
     <img alt="Codex Skill" src="https://img.shields.io/badge/Codex-Skill-111111">
   </a>
 </p>
