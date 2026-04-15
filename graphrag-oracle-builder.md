@@ -19,6 +19,11 @@ The skill is designed for knowledge-agent use cases where answers require both:
 - semantic retrieval from text chunks (RAG)
 - multi-hop reasoning across entities and relationships (Graph)
 
+
+<p align="center">
+  <img src="images/graph/cover-graphrag-skill.png" alt="Admin settings - disable auto-generation" width="600">
+</p>
+
 ## Why Graph + RAG Is Better for Knowledge Agents
 A pure vector-RAG approach is strong for semantic similarity, but weaker at explicit relationship traversal. GraphRAG combines both strengths.
 
