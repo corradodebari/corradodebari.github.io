@@ -134,7 +134,7 @@ skill-installer from https://github.com/corradodebari/skills/tree/main/graphrag-
   allowfullscreen>
 </iframe>
 
-### A. Invoke from Codex
+### Invoke from Codex
 Use prompts such as:
 
 - `Build GraphRAG in Oracle from these files: ...`
