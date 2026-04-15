@@ -1,4 +1,4 @@
-# Oracle SQL Property Graph Tutorial, ep.1: build & query
+# Oracle SQL Property Graph Tutorial: build & query
 
 This tutorial helps you understand the basics of building a Property Graph in Oracle Database. Starting from simple relational tables, you will progressively learn how to define a property graph, query it using SQL/PGQ (Property Graph Queries), and ultimately combine relational tables with graph pattern matching — all within the same SQL statement. The example builds a **professional network** graph in Oracle AI Database 26ai.
 
