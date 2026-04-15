@@ -13,7 +13,7 @@
 </p>
 
 ## Purpose
-`graphrag-oracle-builder` is a Codex Skill that builds a **GraphRAG knowledge base** from unstructured documents and stores it in **Oracle AI Database 26ai Converged Database**.
+`graphrag-oracle-builder` is a Codex Skill that builds a **GraphRAG knowledge base** from unstructured documents and stores it in **Oracle AI Database 26ai Converged Database**. You'll find [**here**](https://github.com/corradodebari/skills/tree/main/graphrag-oracle-builder).
 
 The skill is designed for knowledge-agent use cases where answers require both:
 - semantic retrieval from text chunks (RAG)
