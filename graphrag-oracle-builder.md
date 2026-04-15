@@ -132,6 +132,14 @@ Database result:
 - Embedding vectors on graph records
 
 ## How To Use
+You need the following modules:
+
+- Visual Studio Code
+- Oracle SQL Developer Extension for VS Code 
+- Oracle AI Database version 23ai or later
+- Oracle SQLcl installed and configured as MCP server.
+- Codex – OpenAI’s coding agent plugin for VSCode
+
 In Codex, installed in VS Code, use the built in skill to install from github repo:
 
 ```
