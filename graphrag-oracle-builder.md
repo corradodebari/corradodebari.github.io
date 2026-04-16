@@ -10,6 +10,9 @@
   <a href="https://openai.com/codex/">
     <img alt="Codex Skill" src="https://img.shields.io/badge/Codex-Skill-111111">
   </a>
+  <a href="https://corradodebari.github.io">
+    <img alt="My Blog" src="https://img.shields.io/badge/My-Blog-0A66C2?logo=githubpages&logoColor=white">
+  </a>
 </p>
 
 ## Purpose
