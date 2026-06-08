@@ -11,6 +11,7 @@
     <img alt="My Blog" src="https://img.shields.io/badge/My-Blog-0A66C2?logo=githubpages&logoColor=white">
   </a>
 </p>
+
 ## Goal
 
 This project builds a persistent knowledge graph from documents.
