@@ -74,6 +74,29 @@
       white-space: pre;
     }
 
+    /* Markdown tables */
+    #content table {
+      width: 100%;
+      margin: 1.25rem 0;
+      border: 1px solid #d8dee4;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+    #content th,
+    #content td {
+      border: 1px solid #d8dee4;
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    #content th {
+      background: #f6f8fa;
+      font-weight: 600;
+    }
+    #content tbody tr:nth-child(even) {
+      background: #fbfcfd;
+    }
+
     /* Copy button */
     .copy-btn {
       position: absolute;
@@ -137,5 +160,4 @@
   </script>
 </body>
 </html>
-
 
