@@ -1,5 +1,16 @@
 # Knowledge Graph Extraction Multi-Agent Flow v1
 
+<p align="center">
+  <a href="https://github.com/corradodebari/kg_extraction_multi_agent/">
+    <img alt="GitHub Repo" src="https://img.shields.io/badge/GitHub-Repo-181717?logo=github&logoColor=white">
+  </a>
+  <a href="https://www.oracle.com/database/">
+    <img alt="Oracle AI DB 26ai" src="https://img.shields.io/badge/Oracle-AI%20DB%2026ai-F80000?logo=oracle&logoColor=white">
+  </a>
+  <a href="https://corradodebari.github.io">
+    <img alt="My Blog" src="https://img.shields.io/badge/My-Blog-0A66C2?logo=githubpages&logoColor=white">
+  </a>
+</p>
 ## Goal
 
 This project builds a persistent knowledge graph from documents.
@@ -98,7 +109,11 @@ OpenAI-compatible models are used for extraction and embeddings. By default the 
 
 ## Architecture
 
-![KG Extraction Multi-Agent Flow v1 architecture](images/kg-extraction-flow-v1.svg)
+
+<p align="center">
+  <img src="images/kg-extraction-flow-v1.svg" alt="KG Extraction Multi-Agent Flow v1 architecture" width="700">
+</p>
+
 
 Let describe step-by-step the flow:
 
@@ -675,7 +690,10 @@ In VS Code, with Oracle SQL Developer Extension for VS Code
 and Oracle SQL Developer Graph Visualization for VS Code installed as plugins:
 you'll see something like:
 
-![alt text](images/graph_visual.png)
+<p align="center">
+  <img src="images/graph_visual.png" alt="Admin settings - disable auto-generation" width="600">
+</p>
+
 
 To inspect cumulative document evidence for vertices:
 
