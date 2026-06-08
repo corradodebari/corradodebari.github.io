@@ -509,12 +509,6 @@ Force a document to run again:
 FORCE_REPROCESS=1 .venv/bin/python -m runner graphrag_example.pdf
 ```
 
-### 5. Validate Python Syntax
-
-```bash
-.venv/bin/python -m compileall .
-```
-
 ## Running Example
 
 If you want clean the schema/graph created by previous knowledge graph extractions running, use this utility provided changing the `PREFIX` name, for example `SW1_`:
