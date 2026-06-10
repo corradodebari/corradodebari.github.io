@@ -17,7 +17,7 @@
 This project builds a persistent knowledge graph from documents.
 
 <p align="center">
-  <img src="images/highlevel_kg.png" alt="KG Extraction Multi-Agent Flow v1 architecture" width="700">
+  <img src="images/highlevel_kg.png" alt="KG Extraction Multi-Agent Flow v1 architecture" width="600">
 </p>
 
 At a high level, the pipeline:
