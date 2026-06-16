@@ -56,7 +56,7 @@ This is an example of using the skill in both tools: Codex and Claude.
 
 ### MicroTx Workflows definition & testing
 
-Send the following prompt to Codex/Claude:
+- Send the following prompt to Codex/Claude:
 
 ```text
 # Create a MicroTx workflow.
@@ -107,6 +107,14 @@ Perform the following tasks in order:
     (age 60 > 50 and amount 120000 > 100000 -> Rule 1 -> false)
     Verify the workflow returns approve = false.
 ```
+
+- Get output in UI console:
+
+<p align="center">
+  <img alt="workflow_output" src="images/workflow_result.png" width="500">
+</p>
+
+workflow_result.png
 ### Query resources/workflows
 
 - Question: `In the local MicroTx instance, give me the list of defined LLM providers`
