@@ -114,7 +114,6 @@ Perform the following tasks in order:
   <img alt="workflow_output" src="images/workflow_result.png" width="500">
 </p>
 
-workflow_result.png
 ### Query resources/workflows
 
 - Question: `In the local MicroTx instance, give me the list of defined LLM providers`
