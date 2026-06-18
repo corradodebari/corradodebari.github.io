@@ -1,6 +1,6 @@
 {
-  "createTime": 1770208410793,
-  "updateTime": 1771321380746,
+  "createTime": 1781790937107,
+  "updateTime": 1781798203286,
   "name": "RAG_ingest_data",
   "description": "Ingests data from a local file",
   "version": 2,
@@ -9,8 +9,8 @@
       "name": "create_vector_table",
       "taskReferenceName": "create_vector_table",
       "inputParameters": {
-        "databaseProfile": "oracle-database-livelabuser",
-        "sqlStatement": "CREATE TABLE \"LIVELABSUSER\".\"JAVA_VECTORS\" \n   (\t\"ID\" VARCHAR2(36 BYTE), \n\t\"CONTENT\" CLOB, \n\t\"METADATA\" JSON, \n\t\"EMBEDDING\" VECTOR\n   );",
+        "databaseProfile": "oracle-database",
+        "sqlStatement": "CREATE TABLE \"JAVA_VECTORS\" \n   (\t\"ID\" VARCHAR2(36 BYTE), \n\t\"CONTENT\" CLOB, \n\t\"METADATA\" JSON, \n\t\"EMBEDDING\" VECTOR\n   );",
         "parameters": [],
         "type": "UPDATE"
       },
@@ -35,11 +35,11 @@
           "name": "openai-dev",
           "model": "text-embedding-3-large"
         },
-        "dataStoreProfile": "oracle-database-livelabuser",
+        "dataStoreProfile": "oracle-database",
         "tableName": "java_vectors",
         "data": {
           "source": "local",
-          "filePath": "get-started-java-development-2024.pdf"
+          "filePath": "get-started-java-development.pdf"
         },
         "dimensions": 3072,
         "chunkSize": 512,
@@ -75,5 +75,6 @@
   "variables": {},
   "inputTemplate": {},
   "enforceSchema": true,
-  "metadata": {}
+  "metadata": {},
+  "maskedFields": []
 }

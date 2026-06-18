@@ -1,6 +1,6 @@
 {
-  "createTime": 0,
-  "updateTime": 1771354163467,
+  "createTime": 1781791077800,
+  "updateTime": 1781798642762,
   "name": "llm_chat_human_in_loop",
   "version": 2,
   "tasks": [
@@ -42,8 +42,7 @@
           "name": "user_input",
           "taskReferenceName": "user_input_ref",
           "inputParameters": {
-            "duration": "",
-            "until": ""
+            "duration": "1m"
           },
           "type": "WAIT",
           "decisionCases": {},
@@ -64,7 +63,7 @@
           "inputParameters": {
             "llmProfile": {
               "name": "openai-dev",
-              "model": "gpt-4o-mini"
+              "model": "gpt-5.4-mini"
             },
             "prompt": "#Considering this context in conversation history:\n${collect_history_ref.output.result}\n\nRephrase the question:\n${user_input_ref.output.question}\n",
             "promptTemplate": "rewrite",
@@ -73,7 +72,6 @@
               "history": "${collect_history_ref.output.result}"
             },
             "temperature": 0.8,
-            "maxTokens": 1024,
             "top_k": 40,
             "top_p": 0.9
           },
@@ -118,7 +116,7 @@
           "inputParameters": {
             "llmProfile": {
               "name": "openai-dev",
-              "model": "gpt-4o-mini"
+              "model": "gpt-5.4-mini"
             },
             "temperature": 0.8,
             "maxTokens": 1024,
@@ -127,7 +125,7 @@
               "name": "openai-dev",
               "model": "text-embedding-3-large"
             },
-            "dataStoreProfile": "oracle-database-livelabuser",
+            "dataStoreProfile": "oracle-database",
             "tableName": "JAVA_VECTORS",
             "query": "${rephrasing_ref.output}",
             "dimensions": "512",
@@ -155,10 +153,9 @@
           "inputParameters": {
             "llmProfile": {
               "name": "openai-dev",
-              "model": "gpt-4o-mini"
+              "model": "gpt-5.4-mini"
             },
             "prompt": "#Using these info:\n${doc_retriever_ref.output}\n\n#And conversation history:\n${collect_history_ref.output.result}\n\n#Answer question:\n${user_input_ref.output.question}",
-            "promptTemplate": "",
             "promptVariables": {},
             "temperature": 0.8,
             "maxTokens": 1024,
@@ -194,5 +191,6 @@
   "variables": {},
   "inputTemplate": {},
   "enforceSchema": false,
-  "metadata": {}
+  "metadata": {},
+  "maskedFields": []
 }

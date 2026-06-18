@@ -1,6 +1,6 @@
 {
-  "createTime": 0,
-  "updateTime": 1771268474172,
+  "createTime": 1781790461039,
+  "updateTime": 1781796279029,
   "name": "llm_chat_human_in_loop",
   "version": 1,
   "tasks": [
@@ -42,8 +42,7 @@
           "name": "user_input_ref",
           "taskReferenceName": "user_input_ref",
           "inputParameters": {
-            "duration": "",
-            "until": ""
+            "duration": "1m"
           },
           "type": "WAIT",
           "decisionCases": {},
@@ -86,13 +85,12 @@
           "inputParameters": {
             "llmProfile": {
               "name": "openai-dev",
-              "model": "gpt-4o-mini"
+              "model": "gpt-5.4-mini"
             },
             "prompt": "${collect_history_ref.output.result}",
             "promptTemplate": "",
             "promptVariables": {},
             "temperature": 0.8,
-            "maxTokens": 1024,
             "top_k": 40,
             "top_p": 0.9
           },
@@ -125,5 +123,6 @@
   "variables": {},
   "inputTemplate": {},
   "enforceSchema": false,
-  "metadata": {}
+  "metadata": {},
+  "maskedFields": []
 }

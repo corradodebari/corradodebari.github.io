@@ -14,6 +14,11 @@
   </a>
 </p>
 
+
+<p align="center">
+  <img src="images/microtx-custom-worker.png" alt="microtx" width="600">
+</p>
+
 In this tutorial, I'll show how to adapt the basic Python worker example from the [Python SDK](https://github.com/conductor-oss/python-sdk) to the MicroTx Workflow platform and create a worker process for a `SIMPLE` task type defined in the workflow.
 A second example shows how to integrate an external database resource, SQLite in this case; you can adapt it for databases other than the Oracle Database or PostgreSQL connectors currently supported in MicroTx.
 

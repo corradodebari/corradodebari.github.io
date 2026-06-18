@@ -1,30 +1,61 @@
 #  MicroTx Workflows: ChatBot/RAG examples
 
-In this tutorial, I'll show an examples of an interactive chatbot with OpenAI in MicroTx Workflows, running a Python client, with an instance runnning in the env installed via the **Oracle Live Lab**: [Design and Deploy Agentic Workflows with Large Language Models and Distributed Transactions
-](https://livelabs.oracle.com/ords/r/dbpm/livelabs/run-workshop?p210_wid=4243).
+<p align="center">
+  <a href="https://github.com/corradodebari/skills">
+    <img alt="GitHub Skill" src="https://img.shields.io/badge/GitHub-Skill-181717?logo=github&logoColor=white">
+  </a>
+  <a href="https://www.oracle.com/database/">
+    <img alt="Oracle AI DB 26ai" src="https://img.shields.io/badge/Oracle-AI%20DB%2026ai-F80000?logo=oracle&logoColor=white">
+  </a>
+  <a href="https://www.oracle.com/it/database/transaction-manager-for-microservices/">
+    <img alt="Oracle MicroTx" src="https://img.shields.io/badge/Oracle-MicroTx-F80000?logo=oracle&logoColor=white">
+  </a>
+  <a href="https://corradodebari.github.io">
+    <img alt="My Blog" src="https://img.shields.io/badge/My-Blog-0A66C2?logo=githubpages&logoColor=white">
+  </a>
+</p>
 
-## Setup the connection to the OCI VM
+In this tutorial, I'll show an examples of an interactive chatbot with OpenAI and OCI Generative AI models in MicroTx Workflows, with a command-line Python client.
 
-- Connect with a shell to the OCI LiveLab VM:
-```shell
-ssh -i ssh -i <ssh-public-key.key> opc@<OCI_VM_IP>
-sudo su - oracle
-kubectl get svc -n istio-system
-```
 
-- Check whether the EXTERNAL-IP is **10.107.38.138**. In the next step, update the return value accordingly.
+## Set up the platform
+For a quick, free development installation:
+- From [Oracle Container Registry](https://container-registry.oracle.com/), download and install an `Oracle AI Database 26ai Free Container` using Docker or Podman.
+- Download `Oracle Transaction Manager for Microservices Free` from [here](https://www.oracle.com/database/technologies/transaction-manager-for-microservices-downloads.html).
+- Follow the instructions [here](https://github.com/oracle-samples/microtx-samples/tree/main/docs/quickstart) to run the MicroTx platform locally on your laptop.
+- Check the installation in a browser by opening the console at: `http://127.0.0.1/consoleui/`.
 
-- In a separate shell, on local pc, create a tunnel to execute the python chat client:
-```shell
-ssh -i <ssh-public-key.key> -L 8080:10.107.38.138:80 opc@<OCI_VM_IP>
-```
-
-This will allow to access via local browser to the console at: `http://127.0.0.1:8080/consoleui/`
 
 ## Install the workflow
+We'll prepare the resources to be consumed by the workflows and after we'll upload the workflows.
+
+### Connectors setup
+Under Connector, setup the resources in listed in this paragraph.
+
+#### Database
+To access by the Kubernetes instance to your local Oracle DB Free instance installed via docker/podman, create a Database Profile like this:
+
+- Name: `oracle-database`
+- URL: `jdbc:oracle:thin:@//host.minikube.internal:1521/FREEPDB1`
+
+Set `Username`/`Password` according the an existing user already defined. Use `Test` button to check the connection before `Save`.
+
+
+If you have another kind of instance, change as you prefer.
+
+#### LLM Definitions
+Create an OpenAI connection:
+- Name: `openai-dev`
+- Model Provider: `OPENAI`
+- Models: `gpt-5.4-mini, text-embedding-3-large`
+- API Key: `<your OpenAI API Key>`
+- Base URL: `https://api.openai.com`
+
+Use `Test` button to check the connection before `Save`.
+
 
 ### Simple ChatBot
-- Import [`llm_chat_human_in_loop.json`](llm_chat_human_in_loop.json) as new workflow. This is the version: **1**. 
+- Import [`llm_chat_human_in_loop.json`](llm_chat_human_in_loop.json) as new workflow from the `Workflow Builder` menu. This is the version: **1**. 
 
 <p align="center">
   <img src="images/basic_chatbot.png" alt="similarity" width="300">
@@ -42,7 +73,8 @@ It doesn't need any extra configuration to run.
   <img src="images/ingest.png" alt="similarity" width="300">
 </p>
 
-- Run `RAG_ingest_data` one time to create the vector store will support the RAG based chatbot.
+
+- Run `RAG_ingest_data` one time to create the vector store will support the RAG based chatbot. It will be created a standard vectors table with document's chunks and their vector embeddings.
 
 - From **Agentic AI**/**Prompt Template**, create a prompt template `rewrite` getting from [here](rewrite.txt). This will support the GenAI Task to rewrite the question before to be used in similarity search chunks retrieval.
 
@@ -62,52 +94,63 @@ For a GUI bug, if you want change manually in task definition the `human_chat_co
 In general, if you have an **Object/Array** type parameter, set the value in the workflow json file.
 
 
+
 ## Chatbot client
-### Setup the env to run the chat client 
+### Setup the env to run the chat client
 
-- In a shell create the python env:
-```
-python3.11 -m venv conductor
-source conductor/bin/activate
-python -m pip install -U "pip<26" setuptools wheel
 
-python3.11 install conductor-python
+- Prepare the Python environment:
+
+```shell
+python3 -m venv .venv
+source .venv/bin/activate
+python -m ensurepip --upgrade
+python -m pip install --upgrade pip
+python -m pip install conductor-python
 ```
+
+- Set the standard endpoint for engine communication, which is slightly different from the standard Conductor URL:
+
+```shell
+CONDUCTOR_SERVER_URL=http://127.0.0.1/workflow-server/api
+```
+- Download the [llm_chat_human_in_loop.py](./llm_chat_human_in_loop.py).
 
 ### Run
 
 - To run a simple chatbot on OpenAI, execute:
 ```
 source conductor/bin/activate
-export CONDUCTOR_SERVER_URL=http://localhost:8080/workflow-server/api  
-python3.11 llm_chat_human_in_loop.py
+export CONDUCTOR_SERVER_URL=http://localhost/workflow-server/api  
+python llm_chat_human_in_loop.py
 ```
 - Execution example:
 ```
-(conductor) cdebari@cdebari-mac conductor-examples % python3.11 llm_chat_human_in_loop.py
+(.venv) cdebari@cdebari-mac test-blog-microtx % python llm_chat_human_in_loop.py
 (start_workflow_request: 'StartWorkflowRequest') -> 'str'
-2026-02-16 20:02:39,816 [18689] conductor.client.automator.task_handler INFO     TaskHandler initialized
-2026-02-16 20:02:39,816 [18689] conductor.client.automator.task_handler INFO     Starting worker processes...
-task runner process Process-2 started
-2026-02-16 20:02:39,819 [18689] conductor.client.automator.task_runner INFO     Conductor Worker[name=human_chat_collect_history, pid=18691, status=active, poll_interval=100ms, thread_count=1, poll_timeout=100ms, lease_extend=false, register_task_def=false]
-2026-02-16 20:02:39,819 [18689] conductor.client.automator.task_handler INFO     Started 1 TaskRunner process(es)
-2026-02-16 20:02:39,820 [18689] conductor.client.automator.task_handler INFO     Started all processes
-Started: 7fca1c9b-4a29-49bd-b0c1-90f2ad6f9005
+2026-06-18 17:38:05,847 [41149] conductor.client.automator.task_handler INFO     TaskHandler initialized
+2026-06-18 17:38:05,847 [41149] conductor.client.automator.task_handler INFO     Starting worker processes...
+2026-06-18 17:38:05,851 [41149] conductor.client.automator.task_handler INFO     Started 1 TaskRunner process(es)
+2026-06-18 17:38:05,852 [41149] conductor.client.automator.task_handler INFO     TaskHandler monitor started (restart_on_failure=True, interval=5.0s)
+2026-06-18 17:38:05,853 [41149] conductor.client.automator.task_handler INFO     Started all processes
+2026-06-18 17:38:05,861 [41149] conductor.client.automator.task_runner INFO     Conductor Worker[name=human_chat_collect_history, pid=41153, status=active, poll_interval=100ms, thread_count=1, poll_timeout=100ms, lease_extend=false, register_task_def=false]
+Started: 9bc7612b-9c02-495b-a8fa-a6391d7cb3c9
 Interactive science chat (type 'quit' to exit)
 ==================================================
 
-Workflow details: http://localhost:8080/workflow-server/api/workflow/7fca1c9b-4a29-49bd-b0c1-90f2ad6f9005
-You: who is George Washington?
-Assistant: George Washington was the first President of the United States, serving from 1789 to 1797. He was a key leader during the American Revolutionary War and is often referred to as the "Father of His Country." Washington played a crucial role in the founding of the United States and helped draft the Constitution. He is known for setting many precedents for the presidency and is remembered for his leadership and dedication to the nation.
+Workflow details: http://localhost/workflow-server/api/workflow/9bc7612b-9c02-495b-a8fa-a6391d7cb3c9
 
-You: When did he die?
-Assistant: George Washington died on December 14, 1799.
+You: Who is George Washington?
+Assistant: George Washington was the first President of the United States, serving from 1789 to 1797. He was also a key leader in the American Revolutionary War and is often called the “Father of His Country” for his role in helping the United States become independent.
 
-You: quit
+You: when he was born?
+Assistant: George Washington was born on February 22, 1732.
+
+You: exit
 
 Ending conversation.
 
-Full conversation: http://localhost:8080/workflow-server/api/workflow/7fca1c9b-4a29-49bd-b0c1-90f2ad6f9005
+Full conversation: http://localhost/workflow-server/api/workflow/9bc7612b-9c02-495b-a8fa-a6391d7cb3c9
 Conversation History: [
   {
     "role": "system",
@@ -115,35 +158,36 @@ Conversation History: [
   },
   {
     "role": "user",
-    "message": "who is George Washington?"
+    "message": "Who is George Washington?"
   },
   {
     "role": "assistant",
-    "message": "George Washington was the first President of the United States, serving from 1789 to 1797. He was a key leader during the American Revolutionary War and is often referred to as the \"Father of His Country.\" Washington played a crucial role in the founding of the United States and helped draft the Constitution. He is known for setting many precedents for the presidency and is remembered for his leadership and dedication to the nation."
+    "message": "George Washington was the first President of the United States, serving from 1789 to 1797. He was also a key leader in the American Revolutionary War and is often called the \u201cFather of His Country\u201d for his role in helping the United States become independent."
   },
   {
     "role": "user",
-    "message": "When did he die?"
+    "message": "when he was born?"
   },
   {
     "role": "assistant",
-    "message": "George Washington died on December 14, 1799."
+    "message": "George Washington was born on February 22, 1732."
   }
 ]
-2026-02-16 20:03:05,633 [18689] conductor.client.automator.task_handler INFO     Stopped worker processes...
+2026-06-18 17:38:45,210 [41149] conductor.client.automator.task_handler INFO     Stopped worker processes..
 ```
-As you can see, at `http://localhost:8080/workflow-server/api/workflow/7fca1c9b-4a29-49bd-b0c1-90f2ad6f9005` is available the full execution log.
+
+As you can see, at `http://localhost/workflow-server/api/workflow/9bc7612b-9c02-495b-a8fa-a6391d7cb3c9` is available the full execution log.
 
 - To run a RAG chatbot, execute:
 ```
 source conductor/bin/activate
-export CONDUCTOR_SERVER_URL=http://localhost:8080/workflow-server/api  
-python3.11 llm_chat_human_in_loop_rag.py
+export CONDUCTOR_SERVER_URL=http://localhost/workflow-server/api  
+python llm_chat_human_in_loop_rag.py
 ```
 
 - Execution example:
 ```
-(conductor) cdebari@cdebari-mac conductor-examples % python3.11 llm_chat_human_in_loop_rag.py
+(conductor) cdebari@cdebari-mac conductor-examples % python llm_chat_human_in_loop_rag.py
 (start_workflow_request: 'StartWorkflowRequest') -> 'str'
 2026-02-17 19:49:30,823 [49330] conductor.client.automator.task_handler INFO     TaskHandler initialized
 2026-02-17 19:49:30,823 [49330] conductor.client.automator.task_handler INFO     Starting worker processes...
