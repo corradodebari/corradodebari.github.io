@@ -230,7 +230,7 @@ Started: 63685d43-a8ad-41b1-b288-b993f87c9775
 Interactive science chat (type 'quit' to exit)
 ==================================================
 
-Workflow details: http://localhost:8080/workflow-server/api/workflow/63685d43-a8ad-41b1-b288-b993f87c9775
+Workflow details: http://localhost/workflow-server/api/workflow/63685d43-a8ad-41b1-b288-b993f87c9775
 You: which database can be used?
 Assistant: Oracle Database can be used.
 
@@ -244,7 +244,7 @@ You: quit
 
 Ending conversation.
 
-Full conversation log: http://localhost:8080/workflow-server/api/workflow/63685d43-a8ad-41b1-b288-b993f87c9775
+Full conversation log: http://localhost/workflow-server/api/workflow/63685d43-a8ad-41b1-b288-b993f87c9775
 Conversation History: [
   {
     "role": "system",
