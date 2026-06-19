@@ -18,8 +18,7 @@
   <img src="images/CoverMicroTxChatbot.png" alt="similarity" width="600">
 </p>
 
-In this tutorial, I'll show examples of interactive chatbot workflows in MicroTx Workflows, including a simple chatbot and a RAG-based chatbot. The workflows can use OpenAI or OCI Generative AI LLMs, and the tutorial includes a command-line Python client that starts the process and handles the human-in-the-loop chat interaction.
-
+In this tutorial, I'll show examples on how to use the new **Oracle MicroTx Workflows** to visually design a classic **RAG-pattern chatbot**, leveraging the **Oracle AI Database 26ai** as **vectore store** and **OCI Generative AI LLMs** or **OpenAI**. You'll see how to build a client that starts the conversation, and how the **built-in observability** capability lets you monitor and fine-tune the resources used.
 
 ## Set up the platform
 For a quick, free development installation:
