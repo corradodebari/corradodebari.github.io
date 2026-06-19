@@ -1,4 +1,4 @@
-#  MicroTx Workflows: ChatBot/RAG examples
+# MicroTx Workflows: Chatbot/RAG Examples
 
 <p align="center">
   <a href="https://github.com/corradodebari/skills">
@@ -18,7 +18,7 @@
   <img src="images/CoverMicroTxChatbot.png" alt="similarity" width="600">
 </p>
 
-In this tutorial, I'll show an examples of an interactive chatbot with OpenAI and OCI Generative AI models in MicroTx Workflows, with a command-line Python client.
+In this tutorial, I'll show examples of interactive chatbot workflows in MicroTx Workflows, including a simple chatbot and a RAG-based chatbot. The workflows can use OpenAI or OCI Generative AI LLMs, and the tutorial includes a command-line Python client that starts the process and handles the human-in-the-loop chat interaction.
 
 
 ## Set up the platform
@@ -29,26 +29,26 @@ For a quick, free development installation:
 - Check the installation in a browser by opening the console at: `http://127.0.0.1/consoleui/`.
 
 
-## Install the workflow
-We'll prepare the resources to be consumed by the workflows and after we'll upload the workflows.
+## Install the workflows
+We'll prepare the resources consumed by the workflows, and then we'll upload the workflows.
 
-### Connectors setup
-Under Connector, setup the resources in listed in this paragraph.
+### Connector setup
+Under Connectors, set up the resources listed in this section.
 
 #### Database
-To access by the Kubernetes instance to your local Oracle DB Free instance installed via docker/podman, create a Database Profile like this:
+To let the Kubernetes instance access your local Oracle Database Free instance installed with Docker or Podman, create a Database Profile like this:
 
 - Name: `oracle-database`
 - URL: `jdbc:oracle:thin:@//host.minikube.internal:1521/FREEPDB1`
 
-Set `Username`/`Password` according the an existing user already defined. Use `Test` button to check the connection before `Save`.
+Set `Username`/`Password` according to an existing user that is already defined. Use the `Test` button to check the connection before `Save`.
 
 
-If you have another kind of instance, change as you prefer.
+If you have another kind of instance, change these settings as needed.
 
 #### LLM Definitions
 
-##### OpenAI 
+##### OpenAI
 Create an OpenAI connection:
 - Name: `openai-dev`
 - Model Provider: `OPENAI`
@@ -56,79 +56,79 @@ Create an OpenAI connection:
 - API Key: `<your OpenAI API Key>`
 - Base URL: `https://api.openai.com`
 
-Use `Test` button to check the connection before `Save`.
+Use the `Test` button to check the connection before `Save`.
 
 ##### Oracle Cloud Infrastructure Generative AI
-Set first the:
+First, set:
 - Name: `oci_llm_profiles`
 
-It's quite prettystraighfoward set the other connector parameters if you have already setup your OCI cli with the instruction from **[here](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/sdkconfig.htm)**.
+It is straightforward to set the other connector parameters if you have already set up your OCI CLI by following the instructions **[here](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/sdkconfig.htm)**.
 
-Looking for the `~/.oci/config`, you'll find:
+In `~/.oci/config`, you'll find:
 - User ID
 - Fingerprint
-- API Key: get the link, and copy the .pem file content, from -----BEGIN PRIVATE KEY----- to -----END PRIVATE KEY-----, included these two fixed labels.
+- API Key: get the link and copy the `.pem` file content, from `-----BEGIN PRIVATE KEY-----` to `-----END PRIVATE KEY-----`, including these two fixed labels.
 
-From OCI console, get the:
+From the OCI console, get:
 - Compartment ID
 - Tenant ID
 
 If you choose:
 - Serving Mode: `ONDEMAND`
-  you can choose, according the `Region` you prefer, one of the model listed **[here](https://docs.oracle.com/en-us/iaas/Content/generative-ai/model-endpoint-regions.htm)**, as **google.gemini-2.5-pro**, **meta.llama-3.3-70b-instruct**, **openai.gpt-oss-120b**, **cohere.embed-multilingual-v3.0**, and many more.
+  you can choose one of the models listed **[here](https://docs.oracle.com/en-us/iaas/Content/generative-ai/model-endpoint-regions.htm)** according to the `Region` you prefer, such as **google.gemini-2.5-pro**, **meta.llama-3.3-70b-instruct**, **openai.gpt-oss-120b**, **cohere.embed-multilingual-v3.0**, and many more.
   Example:
-  - Models (comma separated):`google.gemini-2.5-pro, meta.llama-3.3-70b-instruct, openai.gpt-oss-120b, cohere.embed-multilingual-v3.0`
+  - Models (comma separated): `google.gemini-2.5-pro, meta.llama-3.3-70b-instruct, openai.gpt-oss-120b, cohere.embed-multilingual-v3.0`
   - Region: `eu-frankfurt-1`
 
 - Serving Mode: `DEDICATED`
-  you'll set the private LLM you have provisioned
+  set the private LLM you have provisioned.
 
 
-Use `Test` button to check the connection before `Save`.
+Use the `Test` button to check the connection before `Save`.
 
-### Simple ChatBot
-- Import [`llm_chat_human_in_loop.json`](llm_chat_human_in_loop.json) as new workflow from the `Workflow Builder` menu. This is the version: **1**. 
+### Simple Chatbot
+- Import [`llm_chat_human_in_loop.json`](llm_chat_human_in_loop.json) as a new workflow from the `Workflow Builder` menu. This is version **1**. 
 
 <p align="center">
   <img src="images/basic_chatbot.png" alt="similarity" width="300">
 </p>
 
-It doesn't need any extra configuration to run.
+It does not require any extra configuration to run.
 
-### RAG ChatBot
+### RAG Chatbot
 
-- In **Connectors**/**Storage** import the file `get-started-java-development.pdf` from [here](https://docs.oracle.com/en/database/oracle/oracle-database/26/tdpjd/get-started-java-development.pdf)
+- In **Connectors**/**Storage**, import the file `get-started-java-development.pdf` from [here](https://docs.oracle.com/en/database/oracle/oracle-database/26/tdpjd/get-started-java-development.pdf).
 
-- Import the [`RAG_ingest_data.json`](RAG_ingest_data.json), to create a vector table and ingest the knowledge base:
+- Import [`RAG_ingest_data.json`](RAG_ingest_data.json) to create a vector table and ingest the knowledge base:
 
 <p align="center">
   <img src="images/ingest.png" alt="similarity" width="300">
 </p>
 
 
-- Run `RAG_ingest_data` one time to create the vector store will support the RAG based chatbot. It will be created a standard vectors table with document's chunks and their vector embeddings.
+- Run `RAG_ingest_data` once to create the vector store that will support the RAG-based chatbot. This creates a standard vectors table with the document chunks and their vector embeddings.
 
-- From **Agentic AI**/**Prompt Template**, create a prompt template `rewrite` getting from [here](rewrite.txt). This will support the GenAI Task to rewrite the question before to be used in similarity search chunks retrieval.
+- From **Agentic AI**/**Prompt Template**, create a prompt template named `rewrite` using [this file](rewrite.txt). This supports the GenAI Task that rewrites the question before it is used to retrieve chunks through similarity search.
 
-- Finally, import the workflow version **2**, you will find in [`llm_chat_human_in_loop_rag.json`](llm_chat_human_in_loop_rag.json):
+- Finally, import workflow version **2**, which you can find in [`llm_chat_human_in_loop_rag.json`](llm_chat_human_in_loop_rag.json):
 
 <p align="center">
   <img src="images/rag_chatbot.png" alt="similarity" width="300">
 </p>
 
-With this step the RAG workflow setup is over.
+With this step, the RAG workflow setup is complete.
 
 **NOTICE**:
-For a GUI bug, if you want change manually in task definition the `human_chat_collect_history`, the `history` param must be set as **Object/Array** type and put straight in the JSON:
+Due to a GUI bug, if you want to manually change the `human_chat_collect_history` task definition, the `history` parameter must be set as an **Object/Array** type and placed directly in the JSON:
 ```
   "history": "${collect_history_ref.output.result}",
 ```
-In general, if you have an **Object/Array** type parameter, set the value in the workflow json file.
+In general, if you have an **Object/Array** type parameter, set the value in the workflow JSON file.
 
 
 
 ## Chatbot client
-### Setup the env to run the chat client
+### Set up the environment to run the chat client
 
 
 - Prepare the Python environment:
@@ -208,7 +208,7 @@ Conversation History: [
 2026-06-18 17:38:45,210 [41149] conductor.client.automator.task_handler INFO     Stopped worker processes..
 ```
 
-As you can see, at `http://localhost/workflow-server/api/workflow/9bc7612b-9c02-495b-a8fa-a6391d7cb3c9` is available the full execution log.
+As you can see, the full execution log is available at `http://localhost/workflow-server/api/workflow/9bc7612b-9c02-495b-a8fa-a6391d7cb3c9`.
 
 - To run a RAG chatbot, execute:
 ```
@@ -280,22 +280,24 @@ Conversation History: [
 ]
 2026-02-17 19:50:27,897 [49330] conductor.client.automator.task_handler INFO     Stopped worker processes...
 ```
-As you can see, the rephrasing make the question more meaningful since re-written according conversation history.
+As you can see, the rephrasing makes the question more meaningful because it is rewritten according to the conversation history.
 
-### Run with OCI Models
 
-1. Change the ingest workflow in this point:
-- RAG_ingest_data/create_vector_table/SQL Statement: `CREATE TABLE "JAVA_VECTORS"` to ` CREATE TABLE "JAVA_VECTORS_OCI"`
+
+### Run with OCI models
+
+1. Change the ingest workflow in the following places:
+- RAG_ingest_data/create_vector_table/SQL Statement: `CREATE TABLE "JAVA_VECTORS"` to `CREATE TABLE "JAVA_VECTORS_OCI"`
 - RAG_ingest_data/genai_ingestion:
   - Embedding Profile Name: `oci_llm_profiles`
   - Embedding Model: `cohere.embed-multilingual-v3.0`
   - Table Name: `java_vectors_oci`
 2. Run RAG_ingest_data
-3. Change in the `llm_chat_human_in_loop`, version **1**:
+3. In `llm_chat_human_in_loop`, version **1**, change:
   - llm_chat_human_in_loop/chat_complete_ref:
     - LLM Profile: `oci_llm_profiles`
     - Model Name: `google.gemini-2.5-pro`, for example
-4. Change in the `llm_chat_human_in_loop`, version **2**:
+4. In `llm_chat_human_in_loop`, version **2**, change:
   - llm_chat_human_in_loop/rephrasing:
     - LLM Profile: `oci_llm_profiles`
     - Model Name: `google.gemini-2.5-pro`, for example
@@ -308,9 +310,22 @@ As you can see, the rephrasing make the question more meaningful since re-writte
   - llm_chat_human_in_loop/chat_complete:
     - LLM Profile: `oci_llm_profiles`
     - Model Name: `google.gemini-2.5-pro`, for example
-5. Run the two client as previously done.
+5. Run the two clients as before.
 
+### Use the built-in observability
+From the left menu, under `Executions`, you can pick one of the workflows started by a client conversation:
 
+<p align="center">
+  <img src="images/microtx_executed_process.png" alt="similarity" width="300">
+</p>
+
+This gives you access to the full workflow logs, including a chart with a `Timeline` like this:
+
+<p align="center">
+  <img src="images/microtx_observability.png" alt="similarity" width="600">
+</p>
+
+You can use it to evaluate bottlenecks and fix them.
 
 ## Disclaimer
 *The views expressed in this paper are my own and do not necessarily reflect the views of Oracle.*
