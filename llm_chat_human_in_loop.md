@@ -14,6 +14,9 @@
     <img alt="My Blog" src="https://img.shields.io/badge/My-Blog-0A66C2?logo=githubpages&logoColor=white">
   </a>
 </p>
+<p align="center">
+  <img src="images/CoverMicroTxChatbot.png" alt="similarity" width="600">
+</p>
 
 In this tutorial, I'll show an examples of an interactive chatbot with OpenAI and OCI Generative AI models in MicroTx Workflows, with a command-line Python client.
 
@@ -44,6 +47,8 @@ Set `Username`/`Password` according the an existing user already defined. Use `T
 If you have another kind of instance, change as you prefer.
 
 #### LLM Definitions
+
+##### OpenAI 
 Create an OpenAI connection:
 - Name: `openai-dev`
 - Model Provider: `OPENAI`
@@ -53,6 +58,33 @@ Create an OpenAI connection:
 
 Use `Test` button to check the connection before `Save`.
 
+##### Oracle Cloud Infrastructure Generative AI
+Set first the:
+- Name: `oci_llm_profiles`
+
+It's quite prettystraighfoward set the other connector parameters if you have already setup your OCI cli with the instruction from **[here](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/sdkconfig.htm)**.
+
+Looking for the `~/.oci/config`, you'll find:
+- User ID
+- Fingerprint
+- API Key: get the link, and copy the .pem file content, from -----BEGIN PRIVATE KEY----- to -----END PRIVATE KEY-----, included these two fixed labels.
+
+From OCI console, get the:
+- Compartment ID
+- Tenant ID
+
+If you choose:
+- Serving Mode: `ONDEMAND`
+  you can choose, according the `Region` you prefer, one of the model listed **[here](https://docs.oracle.com/en-us/iaas/Content/generative-ai/model-endpoint-regions.htm)**, as **google.gemini-2.5-pro**, **meta.llama-3.3-70b-instruct**, **openai.gpt-oss-120b**, **cohere.embed-multilingual-v3.0**, and many more.
+  Example:
+  - Models (comma separated):`google.gemini-2.5-pro, meta.llama-3.3-70b-instruct, openai.gpt-oss-120b, cohere.embed-multilingual-v3.0`
+  - Region: `eu-frankfurt-1`
+
+- Serving Mode: `DEDICATED`
+  you'll set the private LLM you have provisioned
+
+
+Use `Test` button to check the connection before `Save`.
 
 ### Simple ChatBot
 - Import [`llm_chat_human_in_loop.json`](llm_chat_human_in_loop.json) as new workflow from the `Workflow Builder` menu. This is the version: **1**. 
@@ -116,7 +148,7 @@ CONDUCTOR_SERVER_URL=http://127.0.0.1/workflow-server/api
 ```
 - Download the [llm_chat_human_in_loop.py](./llm_chat_human_in_loop.py).
 
-### Run
+### Run with OpenAI models
 
 - To run a simple chatbot on OpenAI, execute:
 ```
@@ -249,6 +281,34 @@ Conversation History: [
 2026-02-17 19:50:27,897 [49330] conductor.client.automator.task_handler INFO     Stopped worker processes...
 ```
 As you can see, the rephrasing make the question more meaningful since re-written according conversation history.
+
+### Run with OCI Models
+
+1. Change the ingest workflow in this point:
+- RAG_ingest_data/create_vector_table/SQL Statement: `CREATE TABLE "JAVA_VECTORS"` to ` CREATE TABLE "JAVA_VECTORS_OCI"`
+- RAG_ingest_data/genai_ingestion:
+  - Embedding Profile Name: `oci_llm_profiles`
+  - Embedding Model: `cohere.embed-multilingual-v3.0`
+  - Table Name: `java_vectors_oci`
+2. Run RAG_ingest_data
+3. Change in the `llm_chat_human_in_loop`, version **1**:
+  - llm_chat_human_in_loop/chat_complete_ref:
+    - LLM Profile: `oci_llm_profiles`
+    - Model Name: `google.gemini-2.5-pro`, for example
+4. Change in the `llm_chat_human_in_loop`, version **2**:
+  - llm_chat_human_in_loop/rephrasing:
+    - LLM Profile: `oci_llm_profiles`
+    - Model Name: `google.gemini-2.5-pro`, for example
+  - llm_chat_human_in_loop/doc_retriever:
+    - LLM Profile: `oci_llm_profiles`
+    - Model Name: `google.gemini-2.5-pro`, for example
+    - Embedding Profile Name: `oci_llm_profiles`
+    - Embedding Model: `cohere.embed-multilingual-v3.0`
+    - Table Name: `java_vectors_oci`
+  - llm_chat_human_in_loop/chat_complete:
+    - LLM Profile: `oci_llm_profiles`
+    - Model Name: `google.gemini-2.5-pro`, for example
+5. Run the two client as previously done.
 
 
 

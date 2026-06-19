@@ -37,13 +37,6 @@ from conductor.client.http.models import StartWorkflowRequest, RerunWorkflowRequ
 # ---------------------------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------------------------
-LLM_PROVIDER = "openai"
-LLM_MODEL = "gpt-4o-mini"
-SYSTEM_PROMPT = (
-    "You are a helpful assistant that knows about science. "
-    "Answer questions clearly and concisely. If you don't know "
-    "something, say so. Stay on topic."
-)
 VERSION = 2
 
 # ---------------------------------------------------------------------------
