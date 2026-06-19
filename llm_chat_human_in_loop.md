@@ -38,8 +38,8 @@ Under Connectors, set up the resources listed in this section.
 #### Database
 To let the Kubernetes instance access your local Oracle Database Free instance installed with Docker or Podman, create a Database Profile like this:
 
-- Name: `oracle-database`
-- URL: `jdbc:oracle:thin:@//host.minikube.internal:1521/FREEPDB1`
+- **Name**: `oracle-database`
+- **URL**: `jdbc:oracle:thin:@//host.minikube.internal:1521/FREEPDB1`
 
 Set `Username`/`Password` according to an existing user that is already defined. Use the `Test` button to check the connection before `Save`.
 
@@ -50,37 +50,37 @@ If you have another kind of instance, change these settings as needed.
 
 ##### OpenAI
 Create an OpenAI connection:
-- Name: `openai-dev`
-- Model Provider: `OPENAI`
-- Models: `gpt-5.4-mini, text-embedding-3-large`
-- API Key: `<your OpenAI API Key>`
-- Base URL: `https://api.openai.com`
+- **Name**: `openai-dev`
+- **Model Provider**: `OPENAI`
+- **Models**: `gpt-5.4-mini, text-embedding-3-large`
+- **API Key**: `<your OpenAI API Key>`
+- **Base URL**: `https://api.openai.com`
 
 Use the `Test` button to check the connection before `Save`.
 
 ##### Oracle Cloud Infrastructure Generative AI
 First, set:
-- Name: `oci_llm_profiles`
+- **Name**: `oci_llm_profiles`
 
 It is straightforward to set the other connector parameters if you have already set up your OCI CLI by following the instructions **[here](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/sdkconfig.htm)**.
 
 In `~/.oci/config`, you'll find:
-- User ID
-- Fingerprint
-- API Key: get the link and copy the `.pem` file content, from `-----BEGIN PRIVATE KEY-----` to `-----END PRIVATE KEY-----`, including these two fixed labels.
+- **User ID**
+- **Fingerprint**
+- **API Key**: get the link and copy the `.pem` file content, from `-----BEGIN PRIVATE KEY-----` to `-----END PRIVATE KEY-----`, including these two fixed labels.
 
 From the OCI console, get:
-- Compartment ID
-- Tenant ID
+- **Compartment ID**
+- **Tenant ID**
 
 If you choose:
-- Serving Mode: `ONDEMAND`
+- **Serving Mode**: `ONDEMAND`
   you can choose one of the models listed **[here](https://docs.oracle.com/en-us/iaas/Content/generative-ai/model-endpoint-regions.htm)** according to the `Region` you prefer, such as **google.gemini-2.5-pro**, **meta.llama-3.3-70b-instruct**, **openai.gpt-oss-120b**, **cohere.embed-multilingual-v3.0**, and many more.
   Example:
-  - Models (comma separated): `google.gemini-2.5-pro, meta.llama-3.3-70b-instruct, openai.gpt-oss-120b, cohere.embed-multilingual-v3.0`
-  - Region: `eu-frankfurt-1`
+  - **Models (comma separated)**: `google.gemini-2.5-pro, meta.llama-3.3-70b-instruct, openai.gpt-oss-120b, cohere.embed-multilingual-v3.0`
+  - **Region**: `eu-frankfurt-1`
 
-- Serving Mode: `DEDICATED`
+- **Serving Mode**: `DEDICATED`
   set the private LLM you have provisioned.
 
 
@@ -152,7 +152,7 @@ CONDUCTOR_SERVER_URL=http://127.0.0.1/workflow-server/api
 
 - To run a simple chatbot on OpenAI, execute:
 ```
-source conductor/bin/activate
+source .venv/bin/activate
 export CONDUCTOR_SERVER_URL=http://localhost/workflow-server/api  
 python llm_chat_human_in_loop.py
 ```
@@ -212,7 +212,7 @@ As you can see, the full execution log is available at `http://localhost/workflo
 
 - To run a RAG chatbot, execute:
 ```
-source conductor/bin/activate
+source .venv/bin/activate
 export CONDUCTOR_SERVER_URL=http://localhost/workflow-server/api  
 python llm_chat_human_in_loop_rag.py
 ```
@@ -289,27 +289,27 @@ As you can see, the rephrasing makes the question more meaningful because it is 
 1. Change the ingest workflow in the following places:
 - RAG_ingest_data/create_vector_table/SQL Statement: `CREATE TABLE "JAVA_VECTORS"` to `CREATE TABLE "JAVA_VECTORS_OCI"`
 - RAG_ingest_data/genai_ingestion:
-  - Embedding Profile Name: `oci_llm_profiles`
-  - Embedding Model: `cohere.embed-multilingual-v3.0`
-  - Table Name: `java_vectors_oci`
+  - **Embedding Profile Name**: `oci_llm_profiles`
+  - **Embedding Model**: `cohere.embed-multilingual-v3.0`
+  - **Table Name**: `java_vectors_oci`
 2. Run RAG_ingest_data
 3. In `llm_chat_human_in_loop`, version **1**, change:
   - llm_chat_human_in_loop/chat_complete_ref:
-    - LLM Profile: `oci_llm_profiles`
-    - Model Name: `google.gemini-2.5-pro`, for example
+    - **LLM Profile**: `oci_llm_profiles`
+    - **Model Name**: `google.gemini-2.5-pro`, for example
 4. In `llm_chat_human_in_loop`, version **2**, change:
   - llm_chat_human_in_loop/rephrasing:
-    - LLM Profile: `oci_llm_profiles`
-    - Model Name: `google.gemini-2.5-pro`, for example
+    - **LLM Profile**: `oci_llm_profiles`
+    - **Model Name**: `google.gemini-2.5-pro`, for example
   - llm_chat_human_in_loop/doc_retriever:
-    - LLM Profile: `oci_llm_profiles`
-    - Model Name: `google.gemini-2.5-pro`, for example
-    - Embedding Profile Name: `oci_llm_profiles`
-    - Embedding Model: `cohere.embed-multilingual-v3.0`
-    - Table Name: `java_vectors_oci`
+    - **LLM Profile**: `oci_llm_profiles`
+    - **Model Name**: `google.gemini-2.5-pro`, for example
+    - **Embedding Profile Name**: `oci_llm_profiles`
+    - **Embedding Model: `cohere.embed-multilingual-v3.0`
+    - **Table Name**: `java_vectors_oci`
   - llm_chat_human_in_loop/chat_complete:
-    - LLM Profile: `oci_llm_profiles`
-    - Model Name: `google.gemini-2.5-pro`, for example
+    - **LLM Profile**: `oci_llm_profiles`
+    - **Model Name**: `google.gemini-2.5-pro`, for example
 5. Run the two clients as before.
 
 ### Use the built-in observability
