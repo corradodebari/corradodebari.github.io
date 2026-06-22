@@ -18,7 +18,11 @@
   <img src="images/CoverMicroTxChatbot.png" alt="similarity" width="600">
 </p>
 
-In this tutorial, I'll show examples on how to use the new **Oracle MicroTx Workflows** to visually design a classic **RAG-pattern chatbot**, leveraging the **Oracle AI Database 26ai** as **vectore store** and **OCI Generative AI LLMs** or **OpenAI**. You'll see how to build a client that starts the conversation, and how the **built-in observability** capability lets you monitor and fine-tune the resources used.
+In this tutorial, I'll show examples on how to use the new **Oracle MicroTx Workflows** to visually design a classic **RAG-pattern chatbot** taking control of all the conversation steps, leveraging the **Oracle AI Database 26ai** as **vectore store** and **OCI Generative AI LLMs** or **OpenAI**. You'll see how to build a client that starts the conversation, and how the **built-in observability** capability lets you monitor and fine-tune the resources used.
+
+📌 I'm also flagging a more compact approach for chatbot development that MicroTx provides: the **Conversational Chat Agent** you'll find documented **[here](https://docs.oracle.com/en/database/oracle/transaction-manager-for-microservices/26.1/aiwfg/conversational-agent-chat.html)**.
+For a full example, take a look here: **[here](https://github.com/oracle-samples/microtx-samples/tree/main/workflow/RAG-ingestion-retrieval-workflows/conversational-agent-chat-ui)**.
+
 
 ## Set up the platform
 For a quick, free development installation:
