@@ -55,8 +55,8 @@ Environment="OLLAMA_MAX_LOADED_MODELS=1"
 Environment="OLLAMA_SCHED_SPREAD=1"
 Environment="OLLAMA_KEEP_ALIVE=30m"
 Environment="OLLAMA_CONTEXT_LENGTH=131072"
-Environment="OLLAMA_KEEP_ALIVE=30m"
 ```
+
 - reload:
 ```
 sudo systemctl daemon-reload
