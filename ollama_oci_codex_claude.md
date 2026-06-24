@@ -1,10 +1,10 @@
-# Setup Codex/Claude private development environment on OCI/A10 shapes
+# Set up a private Codex/Claude development environment on OCI/A10 shapes
 
 ## Compute node 
-Choose the image `Oracle-Linux-9.7-Gen2-GPU-2026.02.28-0` for a shape like `VM.GPU.A10.2` or `VM.GPU.A10.1` 
+Choose the image `Oracle-Linux-9.7-Gen2-GPU-2026.02.28-0` for a shape such as `VM.GPU.A10.2` or `VM.GPU.A10.1`.
 
 ## Installation 
-- On the Oracle Linux 9.7 version install a set of useful tool:
+- On Oracle Linux 9.7, install a set of useful tools:
 
 ```
 sudo dnf update -y
@@ -31,9 +31,9 @@ sudo dnf install -y \
   podman podman-compose
 ```
 
-## ollama/codex/claude install
+## Ollama/Codex/Claude installation
 
-- install binaries:
+- Install the binaries:
 
 ```
 curl -fsSL https://ollama.com/install.sh | sh
@@ -41,12 +41,12 @@ curl -fsSL https://chatgpt.com/codex/install.sh | sh
 sudo npm install -g @anthropic-ai/claude-code
 ```
 
-### Permanent setup:
-For a permanent start parameters setup:
+### Permanent setup
+To configure permanent startup parameters:
 ```
 sudo systemctl edit ollama
 
-#Edit:
+# Edit:
 
 [Service]
 Environment="OLLAMA_HOST=0.0.0.0:11434"
@@ -57,22 +57,22 @@ Environment="OLLAMA_KEEP_ALIVE=30m"
 Environment="OLLAMA_CONTEXT_LENGTH=131072"
 ```
 
-- reload:
+- Reload the service:
 ```
 sudo systemctl daemon-reload
 sudo systemctl restart ollama
 ```
 
-### On-demand setup:
-Allow to change the context with different LLMs, getting logs.
+### On-demand setup
+This lets you change the context length for different LLMs and view logs.
 
-- stop ollama as system service:
+- Stop Ollama as a system service:
 
 ```
 sudo systemctl stop ollama
 ```
 
-- Context setup. In a different shell, start with the max LLM context allowed:
+- Configure the context. In a different shell, start with the maximum LLM context allowed:
 
 ```
 OLLAMA_CONTEXT_LENGTH=131072 ollama serve
@@ -80,8 +80,7 @@ OLLAMA_CONTEXT_LENGTH=131072 ollama serve
 
 ## Use Codex/Claude
 
-- Optional, for a faster startup, in memory pre-load:
-    - 
+- Optional: for faster startup, preload the model into memory:
     ```
     curl http://localhost:11434/api/generate -d '{
     "model": "gpt-oss:latest",
@@ -90,12 +89,12 @@ OLLAMA_CONTEXT_LENGTH=131072 ollama serve
     }'
     ```
 
-    - check if loaded:
+    - Check whether the model is loaded:
     ```
     nvidia-smi
     ```
 
-- in a different shell start codex/ollama
+- In a different shell, start Codex or Claude with Ollama:
 ```
 ollama launch codex
 ```
@@ -104,9 +103,9 @@ or:
 ollama launch claude
 ```
 
-->choose: gpt-oss:latest
+-> Choose: `gpt-oss:latest`
 
-- Prompt example to examine java code: 
+- Prompt example for examining Java code:
 ```
 Create DESIGN_DOC.md for all .java files under the current directory.
 
