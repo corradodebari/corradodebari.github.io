@@ -80,7 +80,7 @@ OLLAMA_CONTEXT_LENGTH=131072 ollama serve
 
 ## Use Codex/Claude
 
-- In memory pre-load:
+- Optional, for a faster startup, in memory pre-load:
 ```
 curl http://localhost:11434/api/generate -d '{
   "model": "gpt-oss:latest",
