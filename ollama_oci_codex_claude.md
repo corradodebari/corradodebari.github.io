@@ -1,4 +1,13 @@
 # Set up a private Codex/Claude development environment on OCI/A10 shapes
+The aims of this brief tutorial is to explain how to prepare an environment for AI assisted coding in case of:
+- high level security requirements: no source code/credentials/configuration must be shared with public LLMs providers
+- fixed, capped costs x token having a per hour GPU compute nodes allocated at a known cost.
+
+According the model will be used, in this case `gpt-oss:latest`, you have to find the max context length [128k], and use this info to configure the parameter:
+
+`OLLAMA_CONTEXT_LENGTH=131072`
+
+This is the most critical step. 
 
 ## Compute node 
 Choose the image `Oracle-Linux-9.7-Gen2-GPU-2026.02.28-0` for a shape such as `VM.GPU.A10.2` or `VM.GPU.A10.1`.
