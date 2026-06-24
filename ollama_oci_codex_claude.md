@@ -137,3 +137,10 @@ Write the result to DESIGN_DOC.md
 Run the script.
 Then show the first 80 lines of DESIGN_DOC.md
 ```
+
+
+
+
+## Disclaimer
+*The views expressed in this paper are my own and do not necessarily reflect the views of Oracle.*
+
