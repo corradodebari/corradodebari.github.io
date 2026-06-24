@@ -107,10 +107,22 @@ ollama launch claude
 
 - Prompt example to examine java code: 
 ```
-Create DESIGN_CODEX.md for all .java files under the current directory.
+Create DESIGN_DOC.md for all .java files under the current directory.
 
 Do not use a giant inline bash command.
 Create a Python script called generate_design_doc.py.
 Use Python file traversal with pathlib.
 Use a Java parser if available, preferably javalang.
 If javalang is not installed, install it with:
+  python3 -m pip install --user javalang
+
+For each Java file, extract:
+- package
+- classes/interfaces/enums/records if possible
+- fields/properties
+- methods/constructors
+
+Write the result to DESIGN_DOC.md
+Run the script.
+Then show the first 80 lines of DESIGN_DOC.md
+```
