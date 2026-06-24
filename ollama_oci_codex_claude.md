@@ -81,18 +81,19 @@ OLLAMA_CONTEXT_LENGTH=131072 ollama serve
 ## Use Codex/Claude
 
 - Optional, for a faster startup, in memory pre-load:
-```
-curl http://localhost:11434/api/generate -d '{
-  "model": "gpt-oss:latest",
-  "prompt": "",
-  "keep_alive": "30m"
-}'
-```
+    - 
+    ```
+    curl http://localhost:11434/api/generate -d '{
+    "model": "gpt-oss:latest",
+    "prompt": "",
+    "keep_alive": "30m"
+    }'
+    ```
 
-- check if loaded:
-```
-nvidia-smi
-```
+    - check if loaded:
+    ```
+    nvidia-smi
+    ```
 
 - in a different shell start codex/ollama
 ```
