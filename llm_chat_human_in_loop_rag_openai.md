@@ -1,5 +1,25 @@
 # OpenAI-Compatible Chat Gateway for MicroTx Workflow
 
+<p align="center">
+  <a href="https://github.com/corradodebari/skills">
+    <img alt="GitHub Skill" src="https://img.shields.io/badge/GitHub-Skill-181717?logo=github&logoColor=white">
+  </a>
+  <a href="https://www.oracle.com/database/">
+    <img alt="Oracle AI DB 26ai" src="https://img.shields.io/badge/Oracle-AI%20DB%2026ai-F80000?logo=oracle&logoColor=white">
+  </a>
+  <a href="https://www.oracle.com/it/database/transaction-manager-for-microservices/">
+    <img alt="Oracle MicroTx" src="https://img.shields.io/badge/Oracle-MicroTx-F80000?logo=oracle&logoColor=white">
+  </a>
+  <a href="https://corradodebari.github.io">
+    <img alt="My Blog" src="https://img.shields.io/badge/My-Blog-0A66C2?logo=githubpages&logoColor=white">
+  </a>
+</p>
+<p align="center">
+  <img src="images/CoverMicroTxChatbot.png" alt="similarity" width="600">
+</p>
+
+<i> <a href="https://www.oracle.com/it/database/transaction-manager-for-microservices/">**Oracle MicroTx Workflows**</a> is an enterprise-grade durable workflow orchestration platform built on the proven **Conductor** architecture. It combines durable execution, visual workflow design, AI agent orchestration, and transaction-aware coordination to help organizations build reliable long-running business and AI workflows.</i>
+
 This demo exposes an interactive chatbot running as a process on **MicroTx Workflow** as an **OpenAI-compatible API** endpoint, allowing any OpenAI client — including [Open WebUI](https://github.com/open-webui/open-webui) used and tested in this tutorial, to chat with a RAG-powered workflow.
 
 The Python server [llm_chat_human_in_loop_rag_openai.py](./llm_chat_human_in_loop_rag_openai.py) acts as a bridge: it receives standard `/v1/chat/completions` requests, forwards messages to a running MicroTx Workflow workflow via a WAIT task, polls for the LLM response, and returns it in OpenAI format (streaming and non-streaming).

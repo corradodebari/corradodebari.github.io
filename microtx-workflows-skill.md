@@ -18,6 +18,8 @@
 
 # Summary
 
+<i> <a href="https://www.oracle.com/it/database/transaction-manager-for-microservices/">**Oracle MicroTx Workflows**</a> is an enterprise-grade durable workflow orchestration platform built on the proven **Conductor** architecture. It combines durable execution, visual workflow design, AI agent orchestration, and transaction-aware coordination to help organizations build reliable long-running business and AI workflows.</i>
+
 I created a specific **MicroTx Workflows skill** for both **Codex** and **Claude** to make workflow development as simple as possible for beginners. Draft your workflows in natural language by providing a specification, then refine them step by step while deploying and debugging. Continue your work visually in the standard web console.
 It helps define, run, inspect, and manage Oracle MicroTx workflows, connectors, agent profiles, and human task approvals through REST APIs.
 A small step toward making agent-assisted workflow orchestration more practical.

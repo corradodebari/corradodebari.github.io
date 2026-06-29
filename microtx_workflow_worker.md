@@ -19,6 +19,8 @@
   <img src="images/microtx-custom-worker.png" alt="microtx" width="600">
 </p>
 
+<i> <a href="https://www.oracle.com/it/database/transaction-manager-for-microservices/">**Oracle MicroTx Workflows**</a> is an enterprise-grade durable workflow orchestration platform built on the proven **Conductor** architecture. It combines durable execution, visual workflow design, AI agent orchestration, and transaction-aware coordination to help organizations build reliable long-running business and AI workflows.</i>
+
 In this tutorial, I'll show how to adapt the basic Python worker example from the [Python SDK](https://github.com/conductor-oss/python-sdk) to the MicroTx Workflow platform and create a worker process for a `SIMPLE` task type defined in the workflow.
 A second example shows how to integrate an external database resource, SQLite in this case; you can adapt it for databases other than the Oracle Database or PostgreSQL connectors currently supported in MicroTx.
 
