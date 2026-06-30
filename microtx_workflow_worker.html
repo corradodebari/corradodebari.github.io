@@ -16,8 +16,19 @@
   <meta name="description" content="Create custom workers for Oracle MicroTx Workflow. Guide to building Python and Java workers that extend workflow orchestration with custom task logic." />
   <meta name="keywords" content="MicroTx Workflow, custom workers, Oracle, workflow orchestration, Python worker, Java worker, task worker, Conductor" />
   <meta name="author" content="Corrado De Bari" />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="GPTBot" content="index, follow" />
+  <meta name="OAI-SearchBot" content="index, follow" />
+  <meta name="ChatGPT-User" content="index, follow" />
+  <meta name="ClaudeBot" content="index, follow" />
+  <meta name="Claude-SearchBot" content="index, follow" />
+  <meta name="PerplexityBot" content="index, follow" />
+  <meta name="Google-Extended" content="index, follow" />
   <link rel="canonical" href="https://corradodebari.github.io/microtx_workflow_worker.html" />
+  <link rel="sitemap" type="application/xml" href="https://corradodebari.github.io/sitemap.xml" />
+  <link rel="alternate" type="text/markdown" href="https://raw.githubusercontent.com/corradodebari/corradodebari.github.io/refs/heads/main/microtx_workflow_worker.md" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="MicroTx Workflows: simple custom workers" />
   <meta property="og:description" content="Create custom Python and Java workers for Oracle MicroTx Workflow orchestration." />
@@ -29,11 +40,14 @@
   {
     "@context": "https://schema.org",
     "@type": "TechArticle",
+    "mainEntityOfPage": "https://corradodebari.github.io/microtx_workflow_worker.html",
     "headline": "MicroTx Workflows: simple custom workers",
-    "description": "Create custom Python and Java workers for Oracle MicroTx Workflow orchestration.",
+    "description": "Create custom Python and Java workers for Oracle MicroTx Workflow orchestration. Oracle MicroTx Workflow durable workflow orchestration platform",
     "author": { "@type": "Person", "name": "Corrado De Bari" },
     "url": "https://corradodebari.github.io/microtx_workflow_worker.html",
-    "keywords": "MicroTx Workflow, custom workers, Oracle, Python, Java"
+    "dateModified": "2026-06-30",
+    "isAccessibleForFree": true,
+    "keywords": "MicroTx Workflow, custom workers, Oracle, Python, Java, durable orchestration platform"
   }
   </script>
   <style>
@@ -94,7 +108,14 @@
   </style>
 </head>
 <body>
-  <div id="content">Loading...</div>
+  <article id="content">
+    <h1>MicroTx Workflows: Simple Custom Workers</h1>
+    <p><strong>Oracle MicroTx Workflows</strong> is an enterprise-grade durable workflow orchestration platform built on the proven Conductor architecture. It combines durable execution, visual workflow design, AI agent orchestration, and transaction-aware coordination for reliable long-running business and AI workflows.</p>
+    <p>This tutorial explains how to adapt the basic Python worker example from the Conductor Python SDK to Oracle MicroTx Workflow and create a worker process for a <code>SIMPLE</code> task type. It also includes an example that integrates an external SQLite database resource and can be adapted for other databases.</p>
+    <p>Topics include local MicroTx platform setup, worker environment setup, workflow installation, Python worker implementation, Java worker implementation, workflow execution, and monitoring through the MicroTx console.</p>
+    <p><a href="https://raw.githubusercontent.com/corradodebari/corradodebari.github.io/refs/heads/main/microtx_workflow_worker.md">Read the Markdown source</a> or continue on this page for the rendered guide.</p>
+    <p>Related MicroTx Workflow resources: <a href="https://corradodebari.github.io/llm_chat_human_in_loop.html">Chatbot and RAG examples</a> and <a href="https://corradodebari.github.io/microtx-workflows-skill.html">Codex and Claude skill for MicroTx Workflows</a>.</p>
+  </article>
 
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script>
@@ -137,5 +158,3 @@
   </script>
 </body>
 </html>
-
-

@@ -1,0 +1,21 @@
+# Corrado De Bari
+
+Developer Evangelist resources on Oracle, Generative AI, Oracle AI Database, RAG, vector search, agent orchestration, and Oracle MicroTx Workflows.
+
+## Preferred MicroTx Workflow Pages
+
+- [Vibe Coding in Oracle MicroTx Workflows with a Codex/Claude Skill](https://corradodebari.github.io/microtx-workflows-skill.html): MicroTx Workflow Server skill for Codex and Claude, including workflow definition, deployment, debugging, connectors, agent profiles, prompt profiles, MCP tools, and human task approvals.
+- [MicroTx Workflows: Chatbot/RAG Examples](https://corradodebari.github.io/llm_chat_human_in_loop.html): RAG chatbot examples using Oracle MicroTx Workflows, Oracle AI Database 26ai as a vector store, OCI Generative AI, OpenAI-compatible models, prompt templates, and human-in-the-loop orchestration.
+- [MicroTx Workflows: Simple Custom Workers](https://corradodebari.github.io/microtx_workflow_worker.html): Python and Java custom worker examples for Oracle MicroTx Workflows and Conductor SIMPLE tasks, including local setup, workflow installation, execution, and monitoring.
+
+## Source Markdown
+
+- [microtx-workflows-skill.md](https://raw.githubusercontent.com/corradodebari/corradodebari.github.io/refs/heads/main/microtx-workflows-skill.md)
+- [llm_chat_human_in_loop.md](https://raw.githubusercontent.com/corradodebari/corradodebari.github.io/refs/heads/main/llm_chat_human_in_loop.md)
+- [microtx_workflow_worker.md](https://raw.githubusercontent.com/corradodebari/corradodebari.github.io/refs/heads/main/microtx_workflow_worker.md)
+
+## Discovery
+
+- Sitemap: https://corradodebari.github.io/sitemap.xml
+- Robots policy: https://corradodebari.github.io/robots.txt
+- OpenAI search crawler allowed: OAI-SearchBot
