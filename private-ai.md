@@ -2,13 +2,13 @@
 
 <p align="center">
   <a href="https://docs.oracle.com/en/database/oracle/oracle-database/26/odbae/oracle-ai-database-agent-engine/overview.html">
-    <img alt="Oracle AI DB Agent Engine" src="https://img.shields.io/badge/Oracle-AI-DB-Agent-Engine%20DB%2026ai-F80000?logo=oracle&logoColor=white">
+    <img alt="Oracle AI DB Agent Engine" src="https://img.shields.io/badge/Oracle-AI%20DB%20Agent%20Engine-F80000?logo=oracle&logoColor=white">
   </a>
   <a href="https://www.oracle.com/database/">
     <img alt="Oracle AI DB 26ai" src="https://img.shields.io/badge/Oracle-AI%20DB%2026ai-F80000?logo=oracle&logoColor=white">
   </a>
   <a href="https://www.oracle.com/database/private_ai_services_container">
-    <img alt="Private AI Services Container" src="https://img.shields.io/badge/Oracle-MicroTx-F80000?logo=oracle&logoColor=white">
+    <img alt="Private AI Services Container" src="https://img.shields.io/badge/Oracle-Private%20AI%20Services%20Container-F80000?logo=oracle&logoColor=white">
   </a>
   <a href="https://corradodebari.github.io">
     <img alt="My Blog" src="https://img.shields.io/badge/My-Blog-0A66C2?logo=githubpages&logoColor=white">
@@ -33,7 +33,9 @@ After installing SH, the lab uses one Python program for preparation and executi
 
 ## 1. Target architecture
 
-![Python submits the SDK agent to Oracle; the database calls Private AI and executes its search tool](images/db-ai-engine/architecture_db_engine.svg)
+<p align="center">
+ <img src="images/db-ai-engine/architecture_db_engine.svg" alt="Python submits the SDK agent to Oracle; the database calls Private AI and executes its search tool" width="800">
+</p>
 
 Python runs on the Oracle Linux host and connects with `oracledb`. The SDK describes the agent using Agent Spec and invokes `DBMS_AI_AGENT.EXECUTE_IMMEDIATE`. The Engine manages the model/tool loop. Its `PRODUCT_CATALOG_SEARCH` procedure embeds the request and returns up to five products ranked by cosine distance. [[SDK execution implementation](https://github.com/oracle/oracle-db-agent-sdk/blob/main/src/oracle_db_agent_sdk/_plsql.py)]
 
@@ -143,7 +145,10 @@ To pull the Oracle Private AI Services Container, from https://container-registr
 2. Create an Auth Token.
 3. Accept the Private AI image terms in Oracle Container Registry.
 
-![Container-registry](images/db-ai-engine/container-registry.png)
+
+<p align="center">
+ <img src="images/db-ai-engine/container-registry.png" alt="container-registry" width="800">
+</p>
 
 Then, from the shell you can login with your user and Auth Token created:
 
@@ -291,6 +296,9 @@ The procedure is the agent's database tool: it accepts a product request and ret
 
 After changing catalog text, rerun `--setup` to regenerate the embeddings. Vector updates commit after the complete pass. A failure rolls back those updates; granted privileges and created database objects remain. [[Oracle DDL commits](https://docs.oracle.com/en/database/oracle/oracle-database/26/sqlrf/COMMIT.html)]
 
+
+images/db-ai-engine/container-registry.png
+
 ![Oracle Vector Chain calls multilingual-e5-base in Private AI and stores 768-dimensional catalog embeddings](images/db-ai-engine/vector_chain.svg)
 
 The text sent to E5 uses these prefixes:
@@ -425,7 +433,10 @@ SH password:
 
 The execution flow and moving parts are:
 
-![The SDK submits the agent; the database executes the model and tool loop](images/db-ai-engine/agent-execution-flow.svg)
+<p align="center">
+ <img src="images/db-ai-engine/agent-execution-flow.svg" alt="agent-execution-flow" width="800">
+</p>
+
 
 The SDK submits the definition and question to the Engine. The database calls Ministral, executes `PRODUCT_CATALOG_SEARCH` when the model selects it, and sends the tool result back to the model. The procedure calls E5 for the query vector and ranks the catalog with Oracle SQL.
 
@@ -457,7 +468,14 @@ def run_search_step(connection, query):
 
 This extract uses `build_search_tool()` from [product_agent.py](python/product_agent.py). The database executes the procedure directly as a workflow step; E5 still supplies the query embedding. The response contains the procedure's `products_json` output, with IDs, names, descriptions, categories, prices, and distances. [[SDK tool nodes](https://docs.oracle.com/en/database/oracle/oracle-database/26/odbae/oracle-database-agent-sdk/python-api-reference.html)]
 
-![An agent chooses a tool; a fixed workflow step invokes that same database tool](images/db-ai-engine/agent-vs-workflow.svg)
+
+<p align="center">
+ <img src="images/db-ai-engine/agent-vs-workflow.svg" alt="agent-vs-workflow" width="800">
+</p>
+
+<p align="center">
+ <img src="mages/db-ai-engine/vector-similarity.svg" alt="vector-similarity" width="800">
+</p>
 
 ![Conceptual projection of cosine similarity in the vector space](images/db-ai-engine/vector-similarity.svg)
 
