@@ -490,8 +490,6 @@ This extract uses `build_search_tool()` from [product_agent.py](python/product_a
  <img src="images/db-ai-engine/vector-similarity.svg" alt="vector-similarity" width="800">
 </p>
 
-![Conceptual projection of cosine similarity in the vector space](images/db-ai-engine/vector-similarity.svg)
-
 Oracle computes exact cosine distance between the query vector and each stored embedding. It sorts by distance, then product ID, and returns up to five rows. Lower distance means greater similarity; the distance is a ranking measure. [[Oracle VECTOR_DISTANCE](https://docs.oracle.com/en/database/oracle/oracle-database/26/sqlrf/vector_distance.html)]
 
 | Mode | Operation |
