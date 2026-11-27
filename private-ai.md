@@ -1,5 +1,21 @@
 # Agents using Oracle AI Database Agent Engine & Private AI Services Container in Python
 
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+th, td {
+  border: 1px solid #8a8f98;
+  padding: 8px 12px;
+  text-align: left;
+}
+th {
+  background: #f1f3f5;
+}
+</style>
+
 <p align="center">
   <a href="https://docs.oracle.com/en/database/oracle/oracle-database/26/odbae/oracle-ai-database-agent-engine/overview.html">
     <img alt="Oracle AI DB Agent Engine" src="https://img.shields.io/badge/Oracle-AI%20DB%20Agent%20Engine-F80000?logo=oracle&logoColor=white">
