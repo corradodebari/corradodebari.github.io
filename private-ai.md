@@ -487,7 +487,7 @@ This extract uses `build_search_tool()` from [product_agent.py](python/product_a
 </p>
 
 <p align="center">
- <img src="mages/db-ai-engine/vector-similarity.svg" alt="vector-similarity" width="800">
+ <img src="images/db-ai-engine/vector-similarity.svg" alt="vector-similarity" width="800">
 </p>
 
 ![Conceptual projection of cosine similarity in the vector space](images/db-ai-engine/vector-similarity.svg)
