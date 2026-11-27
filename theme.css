@@ -1,0 +1,114 @@
+/* Shared light/dark theme styles. Linked after each page's own <style>. */
+
+/* ---------- Toggle button ---------- */
+.theme-toggle {
+  --tt-bg: #ffffff;
+  --tt-fg: #2c2c2c;
+  --tt-border: #d9d9df;
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 1000;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid var(--tt-border);
+  background: var(--tt-bg);
+  color: var(--tt-fg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .12);
+  transition: transform .08s ease, opacity .08s ease, background .2s ease;
+}
+.theme-toggle:hover { transform: translateY(-1px); opacity: .92; }
+.theme-toggle:focus-visible { outline: 3px solid #4da3ff; outline-offset: 2px; }
+.theme-toggle svg { width: 20px; height: 20px; fill: currentColor; stroke: currentColor; }
+.theme-toggle svg path { stroke: none; }
+
+html[data-theme="dark"] .theme-toggle {
+  --tt-bg: #23272e;
+  --tt-fg: #ffd866;
+  --tt-border: #3a3f48;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .5);
+}
+
+/* Keep the button clear of page content */
+@media (max-width: 1180px) {
+  .topbar-inner { padding-right: 76px !important; }
+}
+@media (max-width: 900px) {
+  /* On small screens the button scrolls away with the page instead of
+     floating over code blocks and their Copy buttons. */
+  .theme-toggle { position: absolute; }
+  body > #content { padding-top: 24px; }
+}
+
+/* ---------- Dark theme ---------- */
+html[data-theme="dark"] {
+  color-scheme: dark;
+  /* index.html tokens */
+  --bg: #121418;
+  --card: #1b1e24;
+  --text: #d6d9de;
+  --muted: #9aa0a8;
+  --line: #2e333b;
+  --accent: #4da3ff;
+  --ink: #f0f2f5;
+}
+
+html[data-theme="dark"] body {
+  background: #121418;
+  color: #d6d9de;
+}
+html[data-theme="dark"] a { color: #4da3ff; }
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4 { color: #f0f2f5; }
+
+/* index.html hard-coded colors */
+html[data-theme="dark"] .topbar { background: #1b1e24; }
+html[data-theme="dark"] .icon-btn { background: #3a3f48; }
+html[data-theme="dark"] .contact a { color: var(--ink); }
+html[data-theme="dark"] .about p { color: var(--text); }
+html[data-theme="dark"] .container h2 { color: #c3c8cf; border-bottom-color: #4a505a; }
+html[data-theme="dark"] .avatar { border-color: #2a2e35; background: #2a2e35; }
+html[data-theme="dark"] footer { color: var(--muted); }
+
+/* Article pages: code */
+html[data-theme="dark"] p code,
+html[data-theme="dark"] li code,
+html[data-theme="dark"] td code {
+  background: #2a2e35;
+  color: #e6e8eb;
+}
+html[data-theme="dark"] pre {
+  background: #1b1e24;
+  border-color: #2e333b;
+  color: #e6e8eb;
+}
+html[data-theme="dark"] .copy-btn {
+  background: #2a2e35;
+  border-color: #4a505a;
+  color: #e6e8eb;
+}
+
+/* Article pages: tables */
+html[data-theme="dark"] table,
+html[data-theme="dark"] th,
+html[data-theme="dark"] td { border-color: #3a3f48 !important; }
+html[data-theme="dark"] th { background: #23272e !important; }
+/* Only pages that stripe tables in light mode (body.zebra) stripe in dark mode */
+html[data-theme="dark"] body.zebra #content tbody tr:nth-child(even) { background: #181b20; }
+
+/* Misc */
+html[data-theme="dark"] blockquote { color: #b5bac2; border-left-color: #3a3f48; }
+html[data-theme="dark"] hr { border-color: #2e333b; }
+/* Many diagrams are transparent PNG/SVG drawn for a white page */
+html[data-theme="dark"] #content img {
+  background: #fff;
+  border-radius: 6px;
+}
