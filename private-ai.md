@@ -312,9 +312,6 @@ The procedure is the agent's database tool: it accepts a product request and ret
 
 After changing catalog text, rerun `--setup` to regenerate the embeddings. Vector updates commit after the complete pass. A failure rolls back those updates; granted privileges and created database objects remain. [[Oracle DDL commits](https://docs.oracle.com/en/database/oracle/oracle-database/26/sqlrf/COMMIT.html)]
 
-
-images/db-ai-engine/container-registry.png
-
 ![Oracle Vector Chain calls multilingual-e5-base in Private AI and stores 768-dimensional catalog embeddings](images/db-ai-engine/vector_chain.svg)
 
 The text sent to E5 uses these prefixes:
