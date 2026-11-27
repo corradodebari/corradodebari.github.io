@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="480" viewBox="0 0 1000 480" role="img" aria-labelledby="title desc">
+<title id="title">Python SDK authoring and Oracle AI Database Agent Engine execution</title>
+<desc id="desc">Python defines the agent with oracle-db-agent-sdk and submits it to DBMS_AI_AGENT. Oracle Database executes the agent and stored search procedure, stores vectors, and calls the Private AI models over the container network.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#3D5168"/></marker></defs>
+<style>text{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;fill:#16283B}.title{font-size:26px;font-weight:700}.subtitle{font-size:16px;fill:#455A70}.head{font-size:18px;font-weight:650}.detail{font-size:16px;fill:#344D64}.small{font-size:14px;fill:#405871}.arrow{fill:none;stroke:#3D5168;stroke-width:2;marker-end:url(#arrow)}</style>
+<rect x="0.5" y="0.5" width="999" height="479" rx="17" fill="#F8FAFD" stroke="#D7E1EC"/>
+<text class="title" x="32" y="46">Define in Python, execute in Oracle AI Database</text>
+<text class="subtitle" x="32" y="75">Oracle Linux host · two Podman containers · one Python program</text>
+<rect x="300" y="105" width="400" height="105" rx="12" fill="#FFFFFF" stroke="#91B6DC"/>
+<text class="head" x="500" y="138" text-anchor="middle">Python · oracle-db-agent-sdk</text>
+<text class="detail" x="500" y="166" text-anchor="middle">llm_config() + plsql_tool() + agent()</text>
+<text class="detail" x="500" y="191" text-anchor="middle">execute(workflow=agent, ...)</text>
+<path class="arrow" d="M390 210V230H250V290"/>
+<path class="arrow" d="M460 340H540"/>
+<path class="arrow" d="M540 375H460"/>
+<text class="small" x="48" y="258">Oracle Net · 127.0.0.1:1521/FREEPDB1</text>
+<text class="small" x="500" y="327" text-anchor="middle">REST</text>
+<text class="small" x="750" y="258" text-anchor="middle">Container network · http://private-ai:8080</text>
+<rect x="40" y="290" width="420" height="135" rx="12" fill="#E7F1FB" stroke="#91B6DC"/>
+<text class="head" x="250" y="320" text-anchor="middle">Oracle AI Database 26ai</text>
+<text class="detail" x="250" y="350" text-anchor="middle">DBMS_AI_AGENT · model/tool loop</text>
+<text class="detail" x="250" y="376" text-anchor="middle">PRODUCT_CATALOG_SEARCH procedure</text>
+<text class="detail" x="250" y="402" text-anchor="middle">product_catalog · vectors + cosine ranking</text>
+<rect x="540" y="290" width="420" height="135" rx="12" fill="#E6F5F0" stroke="#75B8A5"/>
+<text class="head" x="750" y="320" text-anchor="middle">Private AI Services Container</text>
+<text class="detail" x="750" y="350" text-anchor="middle">Ministral 3B · /v1/chat/completions</text>
+<text class="detail" x="750" y="376" text-anchor="middle">E5 base · /v1/embeddings</text>
+<text class="detail" x="750" y="402" text-anchor="middle">Models included in the image</text>
+<text class="small" x="500" y="456" text-anchor="middle">The SDK submits Agent Spec. The database coordinates model calls and executes the tool.</text>
+</svg>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FKZH5GRJXL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-FKZH5GRJXL');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agents using Oracle AI Database Agent Engine & Private AI Services Container in Python</title>
+  <meta name="description" content="Define the agent in Python, execute it in Oracle AI Database, and use private models for multilingual product discovery." />
+  <meta name="keywords" content="MicroTx Workflow, custom workers, Oracle, workflow orchestration, Python worker, Java worker, task worker, Conductor" />
+  <meta name="author" content="Corrado De Bari" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="GPTBot" content="index, follow" />
+  <meta name="OAI-SearchBot" content="index, follow" />
+  <meta name="ChatGPT-User" content="index, follow" />
+  <meta name="ClaudeBot" content="index, follow" />
+  <meta name="Claude-SearchBot" content="index, follow" />
+  <meta name="PerplexityBot" content="index, follow" />
+  <meta name="Google-Extended" content="index, follow" />
+  <link rel="canonical" href="https://corradodebari.github.io/private-ai.html" />
+  <link rel="sitemap" type="application/xml" href="https://corradodebari.github.io/sitemap.xml" />
+  <link rel="alternate" type="text/markdown" href="https://raw.githubusercontent.com/corradodebari/corradodebari.github.io/refs/heads/main/privare-ai.md" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="MicroTx Workflows: simple custom workers" />
+  <meta property="og:description" content="Create custom Python and Java workers for Oracle MicroTx Workflow orchestration." />
+  <meta property="og:url" content="https://corradodebari.github.io/privare-ai.html" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="MicroTx Workflows: simple custom workers" />
+  <meta name="twitter:description" content="Create custom workers for Oracle MicroTx Workflow orchestration." />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "mainEntityOfPage": "https://corradodebari.github.io/privare-ai.html",
+    "headline": "Agents using Oracle AI Database Agent Engine & Private AI Services Container in Python",
+    "description": "Define the agent in Python, execute it in Oracle AI Database, and use private models for multilingual product discovery.",
+    "author": { "@type": "Person", "name": "Corrado De Bari" },
+    "url": "https://corradodebari.github.io/privare-ai.html",
+    "dateModified": "2026-06-30",
+    "isAccessibleForFree": true,
+    "keywords": "Oracle,AI,Database,Agent,Engine,Private,Services,Container,LLM,vLLM,llama.cpp,python,oracle-db,oracle-db-agent-sdk"
+  }
+  </script>
+  <style>
+    em {
+      font-style: italic;
+    }
+    strong {
+      font-weight: bold;
+    }
+    body {
+      font-family: sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      line-height: 1.6;
+    }
+
+    /* Inline code */
+    p code, li code {
+      background: #eee;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+
+    /* Code blocks */
+    pre {
+      position: relative;             /* needed for absolute button */
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 12px;
+      overflow-x: auto;
+      background: #f6f8fa;
+    }
+    pre code {
+      background: transparent !important;
+      padding: 0 !important;
+      display: block;
+      white-space: pre;
+    }
+
+    /* Copy button */
+    .copy-btn {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      font-size: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 2px 6px;
+      cursor: pointer;
+      background: #fff;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    .copy-btn:hover {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <article id="content">
+    <h1>Agents using Oracle AI Database Agent Engine & Private AI Services Container in Python</h1>
+    <p>Define the agent in Python, execute it in Oracle AI Database, and use private models for multilingual product discovery.</p>
+  </article>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    const mdUrl = "https://raw.githubusercontent.com/corradodebari/corradodebari.github.io/refs/heads/main/privare-ai.md";
+
+    // Insert copy buttons into each code block
+    function addCopyButtons(root) {
+      root.querySelectorAll('pre').forEach(pre => {
+        // avoid duplicates
+        if (pre.querySelector('.copy-btn')) return;
+        const btn = document.createElement('button');
+        btn.className = 'copy-btn';
+        btn.textContent = 'Copy';
+        btn.addEventListener('click', async () => {
+          const code = pre.querySelector('code').innerText;
+          try {
+            await navigator.clipboard.writeText(code);
+            btn.textContent = 'Copied!';
+            setTimeout(() => btn.textContent = 'Copy', 1500);
+          } catch (err) {
+            btn.textContent = 'Error';
+            setTimeout(() => btn.textContent = 'Copy', 1500);
+          }
+        });
+        pre.appendChild(btn);
+      });
+    }
+
+    fetch(mdUrl)
+      .then(r => { if (!r.ok) throw new Error(r.statusText); return r.text(); })
+      .then(md => {
+        const html = marked.parse(md);
+        const content = document.getElementById("content");
+        content.innerHTML = html;
+        addCopyButtons(content);
+      })
+      .catch(err => {
+        document.getElementById("content").textContent = "Could not load Markdown: " + err;
+      });
+  </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="355" viewBox="0 0 860 355" role="img" aria-labelledby="title desc">
+<title id="title">How cosine ranking works</title><desc id="desc">A conceptual two-dimensional projection shows a query direction, two nearby product vectors, and two vectors farther away. The real search uses 768 dimensions.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#3D5168"/></marker></defs>
+<style>text{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;fill:#16283B}.title{font-size:27px;font-weight:720}.subtitle{font-size:16px;fill:#455A70}.group{font-size:17px;font-weight:700}.head{font-size:17px;font-weight:680}.detail{font-size:15px;fill:#344D64}.small{font-size:13px;fill:#405871}.arrow{fill:none;stroke:#3D5168;stroke-width:2;marker-end:url(#arrow)}.return{stroke-dasharray:6 5}</style>
+<rect x="0.5" y="0.5" width="859" height="354" rx="17" fill="#F8FAFD" stroke="#D7E1EC"/>
+<text class="title" x="32" y="46">How cosine ranking works</text>
+<text class="subtitle" x="32" y="75">Conceptual projection of a 768-dimensional vector space</text>
+<path d="M95 290H440M95 290V112" fill="none" stroke="#B7C8D9" stroke-width="2"/>
+<path d="M95 290L418 216" fill="none" stroke="#A9B7C7" stroke-width="3"/>
+<path d="M95 290L158 130" fill="none" stroke="#A9B7C7" stroke-width="3"/>
+<path d="M95 290L322 126M95 290L359 162" fill="none" stroke="#468771" stroke-width="3"/>
+<path d="M95 290L340 137" fill="none" stroke="#245F9A" stroke-width="4"/>
+<circle cx="418" cy="216" r="6" fill="#7890A6"/><circle cx="158" cy="130" r="6" fill="#7890A6"/>
+<circle cx="322" cy="126" r="7" fill="#468771"/><circle cx="359" cy="162" r="7" fill="#468771"/>
+<circle cx="340" cy="137" r="7" fill="#245F9A"/>
+<circle cx="502" cy="142" r="6" fill="#245F9A"/><circle cx="502" cy="179" r="6" fill="#468771"/>
+<circle cx="502" cy="216" r="6" fill="#7890A6"/>
+<text class="detail" x="522" y="147">Query direction</text>
+<text class="detail" x="522" y="184">Closer product vectors</text>
+<text class="detail" x="522" y="221">Other product vectors</text>
+<text class="small" x="482" y="277">Top five by ascending cosine distance.</text>
+<text class="small" x="482" y="299">Equal distances are ordered by product ID.</text>
+</svg>

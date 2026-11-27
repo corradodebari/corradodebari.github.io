@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="495" viewBox="0 0 1000 495" role="img" aria-labelledby="title desc">
+<title id="title">Agent execution inside Oracle Database</title><desc id="desc">The Python SDK submits the query and agent definition to Oracle AI Database Agent Engine. The Engine calls Ministral and executes its stored search tool, which calls E5 and ranks catalog rows. The Engine sends tool results back to the model and returns its final response to Python.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#3D5168"/></marker></defs>
+<style>text{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;fill:#16283B}.title{font-size:27px;font-weight:720}.subtitle{font-size:16px;fill:#455A70}.group{font-size:17px;font-weight:700}.head{font-size:17px;font-weight:680}.detail{font-size:15px;fill:#344D64}.small{font-size:13px;fill:#405871}.arrow{fill:none;stroke:#3D5168;stroke-width:2;marker-end:url(#arrow)}.return{stroke-dasharray:6 5}</style>
+<rect x="0.5" y="0.5" width="999" height="494" rx="17" fill="#F8FAFD" stroke="#D7E1EC"/>
+<text class="title" x="32" y="46">Agent execution inside Oracle Database</text>
+<text class="subtitle" x="32" y="75">The SDK submits the agent; the Engine coordinates the model and database tool.</text>
+<rect x="32" y="115" width="265" height="77" rx="10" fill="#FFFFFF" stroke="#CBD8E5"/>
+<text class="head" x="164.5" y="149.5" text-anchor="middle">Python SDK caller</text>
+<text class="detail" x="164.5" y="169.5" text-anchor="middle">execute(workflow=agent, ...)</text>
+<rect x="365" y="115" width="265" height="77" rx="10" fill="#E7F1FB" stroke="#91B6DC"/>
+<text class="head" x="497.5" y="149.5" text-anchor="middle">Database Agent Engine</text>
+<text class="detail" x="497.5" y="169.5" text-anchor="middle">DBMS_AI_AGENT</text>
+<rect x="700" y="115" width="265" height="77" rx="10" fill="#FFF1DA" stroke="#D5AB67"/>
+<text class="head" x="832.5" y="149.5" text-anchor="middle">Chat completions</text>
+<text class="detail" x="832.5" y="169.5" text-anchor="middle">Private Ministral model</text>
+<rect x="365" y="257" width="265" height="78" rx="10" fill="#E7F1FB" stroke="#91B6DC"/>
+<text class="head" x="497.5" y="292" text-anchor="middle">Stored procedure</text>
+<text class="detail" x="497.5" y="312" text-anchor="middle">PRODUCT_CATALOG_SEARCH</text>
+<rect x="700" y="257" width="265" height="78" rx="10" fill="#E6F5F0" stroke="#75B8A5"/>
+<text class="head" x="832.5" y="292" text-anchor="middle">Query embedding</text>
+<text class="detail" x="832.5" y="312" text-anchor="middle">Private AI · E5 base</text>
+<rect x="365" y="384" width="265" height="74" rx="10" fill="#E6F5F0" stroke="#75B8A5"/>
+<text class="head" x="497.5" y="417" text-anchor="middle">Oracle vector search</text>
+<text class="detail" x="497.5" y="437" text-anchor="middle">Five products by cosine distance</text>
+<rect x="32" y="384" width="265" height="74" rx="10" fill="#FFFFFF" stroke="#CBD8E5"/>
+<text class="head" x="164.5" y="417" text-anchor="middle">SDK result</text>
+<text class="detail" x="164.5" y="437" text-anchor="middle">Full database response as JSON</text>
+<path class="arrow" d="M297 153H365"/>
+<path class="arrow" d="M630 145H700"/>
+<path class="arrow return" d="M700 170H630"/>
+<path class="arrow" d="M498 192V257"/>
+<text class="small" x="510" y="226">Structured tool call</text>
+<path class="arrow" d="M630 286H700"/>
+<path class="arrow return" d="M700 316H630"/>
+<path class="arrow" d="M498 335V384"/>
+<path class="arrow return" d="M365 421H327V178H365"/>
+<path class="arrow" d="M365 165H312V357H164V384"/>
+<text class="small" x="51" y="302">Tool result returns through the Engine</text>
+<text class="small" x="51" y="346">Completed response returns to Python</text>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="392" viewBox="0 0 1000 392" role="img" aria-labelledby="title desc">
+<title id="title">Two SDK execution patterns in the same database Engine</title><desc id="desc">An SDK agent lets the model select a database procedure and use its results to answer. An SDK tool_node invokes that procedure as a fixed step and returns its output. Both are submitted with execute and run in Oracle AI Database Agent Engine.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#3D5168"/></marker></defs>
+<style>text{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;fill:#16283B}.title{font-size:27px;font-weight:720}.subtitle{font-size:16px;fill:#455A70}.group{font-size:17px;font-weight:700}.head{font-size:17px;font-weight:680}.detail{font-size:15px;fill:#344D64}.small{font-size:13px;fill:#405871}.arrow{fill:none;stroke:#3D5168;stroke-width:2;marker-end:url(#arrow)}.return{stroke-dasharray:6 5}</style>
+<rect x="0.5" y="0.5" width="999" height="391" rx="17" fill="#F8FAFD" stroke="#D7E1EC"/>
+<text class="title" x="32" y="46">One Engine, two SDK execution patterns</text>
+<text class="subtitle" x="32" y="75">Both paths use the same stored search procedure inside Oracle AI Database.</text>
+<text class="group" x="32" y="114">agent() → execute()</text>
+<rect x="32" y="132" width="201" height="68" rx="10" fill="#FFFFFF" stroke="#CBD8E5"/>
+<text class="head" x="132.5" y="172" text-anchor="middle">User query</text>
+<rect x="272" y="132" width="212" height="68" rx="10" fill="#FFF1DA" stroke="#D5AB67"/>
+<text class="head" x="378" y="172" text-anchor="middle">Model selects tool</text>
+<rect x="523" y="132" width="220" height="68" rx="10" fill="#E7F1FB" stroke="#91B6DC"/>
+<text class="head" x="633" y="172" text-anchor="middle">Database procedure</text>
+<rect x="782" y="132" width="186" height="68" rx="10" fill="#E6F5F0" stroke="#75B8A5"/>
+<text class="head" x="875" y="172" text-anchor="middle">Model answer</text>
+<path class="arrow" d="M233 166H272"/>
+<path class="arrow" d="M484 166H523"/>
+<path class="arrow" d="M743 166H782"/>
+<text class="small" x="32" y="227">The Engine returns tool results to the model and completes the agent's response.</text>
+<text class="group" x="32" y="274">tool_node() → execute()</text>
+<rect x="32" y="292" width="201" height="68" rx="10" fill="#FFFFFF" stroke="#CBD8E5"/>
+<text class="head" x="132.5" y="332" text-anchor="middle">User query</text>
+<rect x="272" y="292" width="212" height="68" rx="10" fill="#E7F1FB" stroke="#91B6DC"/>
+<text class="head" x="378" y="332" text-anchor="middle">Fixed tool step</text>
+<rect x="523" y="292" width="220" height="68" rx="10" fill="#E7F1FB" stroke="#91B6DC"/>
+<text class="head" x="633" y="332" text-anchor="middle">Database procedure</text>
+<rect x="782" y="292" width="186" height="68" rx="10" fill="#E6F5F0" stroke="#75B8A5"/>
+<text class="head" x="875" y="332" text-anchor="middle">Database rows</text>
+<path class="arrow" d="M233 326H272"/>
+<path class="arrow" d="M484 326H523"/>
+<path class="arrow" d="M743 326H782"/>
+</svg>
