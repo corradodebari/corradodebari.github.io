@@ -1,0 +1,3 @@
+# Files kept in the repo but not published by GitHub Pages
+exclude:
+  - CLAUDE.md
